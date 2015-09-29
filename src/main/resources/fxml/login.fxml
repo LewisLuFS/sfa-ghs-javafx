@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox id="loginPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfa.ghs.controller.login.LoginController">
+	<HBox id="titleHBox" alignment="CENTER">
+		<padding>
+			<Insets left="0" right="0" top="10" bottom="10" />
+		</padding>
+
+		<Text id="welcome-text" text="GHS配载系统" />
+	</HBox>
+
+	<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+		<Text fx:id="errorMessage" layoutX="150.0" layoutY="30.0" />
+
+		<Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="50.0" prefWidth="100.0" text="用户名：">
+			<labelFor>
+				<TextField fx:id="loginName" layoutX="150.0" layoutY="45.0" promptText="admin|test" />
+			</labelFor>
+		</Label>
+		<fx:reference source="loginName" />
+
+		<Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="95.0" prefWidth="100.0" text="密码：">
+			<labelFor>
+				<PasswordField fx:id="password" layoutX="150.0" layoutY="90.0" promptText="admin" />
+			</labelFor>
+		</Label>
+		<fx:reference source="password" />
+
+		<Button fx:id="loginBtn" layoutX="150.0" layoutY="135.0" defaultButton="true" text="登录" onAction="#loginAction" />
+	</AnchorPane>
+
+	<stylesheets>
+		<URL value="@/css/default.css" />
+	</stylesheets>
+</VBox>

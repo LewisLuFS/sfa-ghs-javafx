@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfa.ghs.controller.about.AboutController">
+	<HBox id="titleHBox" alignment="CENTER">
+		<padding>
+			<Insets left="0" right="0" top="10" bottom="10" />
+		</padding>
+
+		<Text id="welcome-text" text="GHS配载系统" />
+	</HBox>
+
+	<GridPane alignment="CENTER_LEFT" hgap="30" vgap="5">
+		<padding>
+			<Insets left="60" right="60" top="20" bottom="10" />
+		</padding>
+
+		<Label text="版本号" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+		<Text fx:id="verNo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+		<Label text="发布日期" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+		<Text fx:id="verDate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+		<Label text="技术支持" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+		<Text fx:id="support" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+		<Label text="版权所有" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+		<Text fx:id="copyright" GridPane.columnIndex="1"
+			GridPane.rowIndex="3" />
+	</GridPane>
+
+	<HBox id="btnHBox" alignment="CENTER_RIGHT">
+		<padding>
+			<Insets left="15" right="15" top="10" bottom="10" />
+		</padding>
+
+		<Button text="确定" onAction="#closeAction" />
+	</HBox>
+
+	<stylesheets>
+		<URL value="@/css/default.css" />
+	</stylesheets>
+</VBox>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.sfa.ghs.custom.ui.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfa.ghs.controller.lab.DemoController"
+	spacing="0">
+	<padding>
+		<Insets left="0" right="0" top="0" bottom="0" />
+	</padding>
+
+	<FlightInfo fx:id="flightInfo" />
+
+	<stylesheets>
+		<URL value="@/css/default.css" />
+	</stylesheets>
+</VBox>

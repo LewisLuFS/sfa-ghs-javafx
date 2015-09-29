@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1">
+	<!-- TODO Add Nodes -->
+	<top>
+		<VBox styleClass="box" spacing="2">
+			<padding>
+				<Insets left="2" right="2" top="2" bottom="2" />
+			</padding>
+		</VBox>
+	</top>
+
+	<center>
+		<HBox styleClass="box" spacing="2" alignment="BASELINE_LEFT">
+			<padding>
+				<Insets left="2" right="2" top="2" bottom="2" />
+			</padding>
+
+			<Label text="FWD" />
+
+			<VBox HBox.hgrow="SOMETIMES">
+				<HBox spacing="2" alignment="CENTER">
+					<padding>
+						<Insets left="2" right="2" top="2" bottom="2" />
+					</padding>
+
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+					<Pane prefWidth="70" prefHeight="100" styleClass="uldBox" />
+				</HBox>
+
+				<HBox spacing="2" alignment="CENTER">
+					<padding>
+						<Insets left="2" right="2" top="2" bottom="2" />
+					</padding>
+
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+
+					<Pane HBox.hgrow="SOMETIMES" />
+
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+					<Pane prefWidth="70" prefHeight="90" styleClass="uldBox2" />
+				</HBox>
+			</VBox>
+
+			<Label text="AFT" />
+		</HBox>
+	</center>
+
+	<bottom>
+		<Label text="aaa" />
+	</bottom>
+
+	<stylesheets>
+		<URL value="@/css/default.css" />
+	</stylesheets>
+</BorderPane>
