@@ -36,7 +36,7 @@
 		<Label GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="labelContent" fx:id="crew" />
 
 		<Label GridPane.columnIndex="4" GridPane.rowIndex="1" styleClass="labelTitle" text="救生筏" />
-		<CheckBox GridPane.columnIndex="5" GridPane.rowIndex="1" text="是" fx:id="lifeRafts" />
+		<CheckBox GridPane.columnIndex="5" GridPane.rowIndex="1" text="是" styleClass="labelContent" fx:id="lifeRafts" />
 
 		<Label GridPane.columnIndex="6" GridPane.rowIndex="1" styleClass="labelTitle" text="DOI" />
 		<Label GridPane.columnIndex="7" GridPane.rowIndex="1" styleClass="labelContent" fx:id="doi" />

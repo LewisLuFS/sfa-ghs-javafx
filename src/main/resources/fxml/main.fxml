@@ -18,8 +18,7 @@
 			<Text id="welcome-text" text="GHS配载系统" HBox.hgrow="ALWAYS" />
 			<Pane HBox.hgrow="ALWAYS" />
 			<Hyperlink fx:id="name" HBox.hgrow="NEVER" />
-			<Button styleClass="about" text="关于" onAction="#openAboutScene" HBox.hgrow="NEVER" />
-			<Button styleClass="logout" text="退出" onAction="#logoutAction" HBox.hgrow="NEVER" />
+			<Button text="退出" onAction="#logoutAction" HBox.hgrow="NEVER" />
 		</HBox>
 	</top>
 

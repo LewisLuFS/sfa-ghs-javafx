@@ -85,16 +85,6 @@ public class MainController extends BaseController {
 	}
 
 	/**
-	 * 打开关于页面
-	 * 
-	 * @param event
-	 */
-	@FXML
-	public void openAboutScene(ActionEvent event) {
-		LocalManager.getApp().openAboutView();
-	}
-
-	/**
 	 * 退出登录
 	 *
 	 * @param event

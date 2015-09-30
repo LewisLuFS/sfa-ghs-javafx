@@ -4,9 +4,7 @@ public enum FxmlEnum {
 	// 登录
 	login(400, 240, "登录", "/fxml/login.fxml", false),
 	// 主页面
-	main(1024, 768, "GHS配载系统客户端 - V0.1 Demo", "/fxml/main.fxml", true),
-	// 关于
-	about(400, 300, "关于", "/fxml/help/about.fxml", false);
+	main(1230, 768, "GHS配载系统客户端 - V0.1 Demo", "/fxml/main.fxml", true);
 
 	private double width;
 	private double height;

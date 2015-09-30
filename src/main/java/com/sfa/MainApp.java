@@ -42,14 +42,6 @@ public class MainApp extends Application {
 		}
 	}
 
-	public void openAboutView() {
-		try {
-			SceneUtil.openScene(FxmlEnum.about);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-	}
-
 	public void addTab(TabPane tabPane, String fxml, String tabName) {
 		try {
 			SceneUtil.addTab(tabPane, fxml, tabName);

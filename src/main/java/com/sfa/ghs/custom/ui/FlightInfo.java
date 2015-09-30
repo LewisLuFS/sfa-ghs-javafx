@@ -60,7 +60,7 @@ public class FlightInfo extends VBox {
 	}
 
 	private void initialize() {
-		this.setSpacing(5);
+		this.setSpacing(2);
 		this.setPadding(new Insets(2, 5, 2, 5));
 		this.getStyleClass().setAll("vBox");
 	}
