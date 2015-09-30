@@ -1,24 +1,30 @@
 package com.sfa.ghs.custom.vo;
 
-public class FlightInfoVO {
-	private String acNo;
-	private String flightNo;
-	private String flihgtDate;
-	private String dow;
-	private String oilBegin;
-	private String oilValue;
-	private String mlw;
-	private String flightSect;
-	private String crag;
-	
-	private String ver;
+import java.util.Date;
 
-	public String getAcNo() {
-		return acNo;
+public class FlightInfoVO {
+	private String acRegNo;
+	private String flightNo;
+	private Date flihgtDate;
+	private int dow;
+	private int takeoffFuel;
+	private int tripFuel;
+	private int mtow;
+	private String flightSect;
+	private String crew;
+	private boolean lifeRafts;
+	private double doi;
+	private double takeoffFuelIndex;
+	private double loadingFuelIndex;
+	private int mlw;
+	private int ver;
+
+	public String getAcRegNo() {
+		return acRegNo;
 	}
 
-	public void setAcNo(String acNo) {
-		this.acNo = acNo;
+	public void setAcRegNo(String acRegNo) {
+		this.acRegNo = acRegNo;
 	}
 
 	public String getFlightNo() {
@@ -29,44 +35,44 @@ public class FlightInfoVO {
 		this.flightNo = flightNo;
 	}
 
-	public String getFlihgtDate() {
+	public Date getFlihgtDate() {
 		return flihgtDate;
 	}
 
-	public void setFlihgtDate(String flihgtDate) {
+	public void setFlihgtDate(Date flihgtDate) {
 		this.flihgtDate = flihgtDate;
 	}
 
-	public String getDow() {
+	public int getDow() {
 		return dow;
 	}
 
-	public void setDow(String dow) {
+	public void setDow(int dow) {
 		this.dow = dow;
 	}
 
-	public String getOilBegin() {
-		return oilBegin;
+	public int getTakeoffFuel() {
+		return takeoffFuel;
 	}
 
-	public void setOilBegin(String oilBegin) {
-		this.oilBegin = oilBegin;
+	public void setTakeoffFuel(int takeoffFuel) {
+		this.takeoffFuel = takeoffFuel;
 	}
 
-	public String getOilValue() {
-		return oilValue;
+	public int getTripFuel() {
+		return tripFuel;
 	}
 
-	public void setOilValue(String oilValue) {
-		this.oilValue = oilValue;
+	public void setTripFuel(int tripFuel) {
+		this.tripFuel = tripFuel;
 	}
 
-	public String getMlw() {
-		return mlw;
+	public int getMtow() {
+		return mtow;
 	}
 
-	public void setMlw(String mlw) {
-		this.mlw = mlw;
+	public void setMtow(int mtow) {
+		this.mtow = mtow;
 	}
 
 	public String getFlightSect() {
@@ -77,19 +83,59 @@ public class FlightInfoVO {
 		this.flightSect = flightSect;
 	}
 
-	public String getCrag() {
-		return crag;
+	public String getCrew() {
+		return crew;
 	}
 
-	public void setCrag(String crag) {
-		this.crag = crag;
+	public void setCrew(String crew) {
+		this.crew = crew;
 	}
 
-	public String getVer() {
+	public boolean isLifeRafts() {
+		return lifeRafts;
+	}
+
+	public void setLifeRafts(boolean lifeRafts) {
+		this.lifeRafts = lifeRafts;
+	}
+
+	public double getDoi() {
+		return doi;
+	}
+
+	public void setDoi(double doi) {
+		this.doi = doi;
+	}
+
+	public double getTakeoffFuelIndex() {
+		return takeoffFuelIndex;
+	}
+
+	public void setTakeoffFuelIndex(double takeoffFuelIndex) {
+		this.takeoffFuelIndex = takeoffFuelIndex;
+	}
+
+	public double getLoadingFuelIndex() {
+		return loadingFuelIndex;
+	}
+
+	public void setLoadingFuelIndex(double loadingFuelIndex) {
+		this.loadingFuelIndex = loadingFuelIndex;
+	}
+
+	public int getMlw() {
+		return mlw;
+	}
+
+	public void setMlw(int mlw) {
+		this.mlw = mlw;
+	}
+
+	public int getVer() {
 		return ver;
 	}
 
-	public void setVer(String ver) {
+	public void setVer(int ver) {
 		this.ver = ver;
 	}
 }

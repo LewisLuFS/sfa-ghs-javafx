@@ -5,7 +5,7 @@
 	-fx-font-size: 14.0px;
 }
 .text-field, .text-area {
-	-fx-padding: 6.0 6.0 6.0 6.0;
+	-fx-padding: 4.0 4.0 4.0 4.0;
 }
 .text-field:focused, .text-area:focused {
 	-fx-prompt-text-fill: rgb(186.0, 186.0, 186.0);
@@ -13,38 +13,32 @@
 .button {
 	-fx-cursor: hand;
 	-fx-font-weight: bold;
-	-fx-padding: 6.0 12.0 6.0 12.0;
+	-fx-padding: 4.0 8.0 4.0 8.0;
 }
 
 /**
  * 登录页面
  */
 #titleHBox {
-	-fx-background-color: GAINSBORO;
-	-fx-border-color: GAINSBORO GAINSBORO GRAY GAINSBORO;
+	-fx-border-color: #C8C8C8 #F4F4F4 #C8C8C8 #F4F4F4;
 }
 #welcome-text {
 	-fx-font-size: 28px;
-	-fx-font-family: "Arial Narrow";
 }
 #errorMessage {
 	-fx-font-size: 14.0px;
 	-fx-fill: FIREBRICK;
-	-fx-font-weight: bold;
-	-fx-effect: dropshadow(gaussian, rgba(255.0, 255.0, 255.0, 0.5), 0.0,
-		0.0, 0.0, 1.0);
 }
 
 /**
  * 普通页面
  */
 .vBox {
-	-fx-background-color: GAINSBORO;
-	-fx-border-color: GAINSBORO GAINSBORO GHOSTWHITE GAINSBORO;
+	-fx-border-color: #C8C8C8 #F4F4F4 #C8C8C8 #F4F4F4;
 }
 
 .labelTitle {
-	-fx-text-fill: #333333;
+	-fx-text-fill: BLACK;
 }
 
 .labelContent {

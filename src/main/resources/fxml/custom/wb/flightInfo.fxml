@@ -45,7 +45,7 @@
 		<Label GridPane.columnIndex="9" GridPane.rowIndex="1" styleClass="labelContent" fx:id="takeoffFuelIndex" />
 
 		<Label GridPane.columnIndex="10" GridPane.rowIndex="1" styleClass="labelTitle" text="着陆油量指数" />
-		<Label GridPane.columnIndex="11" GridPane.rowIndex="1" styleClass="labelContent" fx:id="loadingFuelIndex" />
+		<Label GridPane.columnIndex="11" GridPane.rowIndex="1" styleClass="labelContent" text="5.8" />
 
 		<Label GridPane.columnIndex="12" GridPane.rowIndex="1" styleClass="labelTitle" text="最大着陆重量（KG）" />
 		<TextField GridPane.columnIndex="13" GridPane.rowIndex="1" fx:id="mlw" />
@@ -58,25 +58,25 @@
 		<TextField GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.columnSpan="10" HBox.hgrow="SOMETIMES" />
 
 		<columnConstraints>
-			<ColumnConstraints prefWidth="45" minWidth="45" />
+			<ColumnConstraints prefWidth="50" minWidth="50" />
+			<ColumnConstraints prefWidth="80" minWidth="80" />
+			<ColumnConstraints prefWidth="50" minWidth="50" />
 			<ColumnConstraints prefWidth="70" minWidth="70" />
+			<ColumnConstraints prefWidth="65" minWidth="65" />
+			<ColumnConstraints prefWidth="100" minWidth="100" />
 			<ColumnConstraints prefWidth="45" minWidth="45" />
-			<ColumnConstraints prefWidth="62" minWidth="62" />
 			<ColumnConstraints prefWidth="60" minWidth="60" />
-			<ColumnConstraints prefWidth="92" minWidth="92" />
-			<ColumnConstraints prefWidth="38" minWidth="38" />
-			<ColumnConstraints prefWidth="52" minWidth="52" />
 			<ColumnConstraints prefWidth="105" minWidth="105" />
-			<ColumnConstraints prefWidth="52" minWidth="52" />
+			<ColumnConstraints prefWidth="60" minWidth="60" />
 			<ColumnConstraints prefWidth="105" minWidth="105" />
-			<ColumnConstraints prefWidth="52" minWidth="52" />
-			<ColumnConstraints prefWidth="135" minWidth="135" />
+			<ColumnConstraints prefWidth="60" minWidth="60" />
+			<ColumnConstraints prefWidth="140" minWidth="140" />
 			<ColumnConstraints prefWidth="80" minWidth="80" />
 		</columnConstraints>
 		<rowConstraints>
-			<RowConstraints prefHeight="26" minHeight="26" />
-			<RowConstraints prefHeight="26" minHeight="26" />
-			<RowConstraints prefHeight="26" minHeight="26" />
+			<RowConstraints prefHeight="30" minHeight="30" />
+			<RowConstraints prefHeight="30" minHeight="30" />
+			<RowConstraints prefHeight="30" minHeight="30" />
 		</rowConstraints>
 	</GridPane>
 

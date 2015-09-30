@@ -2,19 +2,21 @@ package com.sfa.ghs.custom.ui;
 
 import java.io.IOException;
 
+import com.sfa.common.util.DateUtil;
 import com.sfa.ghs.custom.data.UIEnum;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class FlightInfo extends VBox {
 	@FXML
-	private Label acNo;
+	private Label acRegNo;
 	@FXML
 	private Label flightNo;
 	@FXML
@@ -22,15 +24,25 @@ public class FlightInfo extends VBox {
 	@FXML
 	private Label dow;
 	@FXML
-	private Label oilBegin;
+	private Label takeoffFuel;
 	@FXML
-	private Label oilValue;
+	private Label tripFuel;
 	@FXML
-	private TextField mlw;
+	private TextField mtow;
 	@FXML
 	private Label flightSect;
 	@FXML
-	private Label crag;
+	private Label crew;
+	@FXML
+	private CheckBox lifeRafts;
+	@FXML
+	private Label doi;
+	@FXML
+	private Label takeoffFuelIndex;
+	@FXML
+	private Label loadingFuelIndex;
+	@FXML
+	private TextField mlw;
 	@FXML
 	private Label ver;
 
@@ -54,14 +66,17 @@ public class FlightInfo extends VBox {
 	}
 
 	public void initData(FlightInfoVO vo) {
-		acNo.textProperty().set(vo.getAcNo());
+		acRegNo.textProperty().set(vo.getAcRegNo());
 		flightNo.textProperty().set(vo.getFlightNo());
-		flihgtDate.textProperty().set(vo.getFlihgtDate());
-		dow.textProperty().set(vo.getDow());
-		oilBegin.textProperty().set(vo.getOilBegin());
-		oilValue.textProperty().set(vo.getOilValue());
+		flihgtDate.textProperty().set(DateUtil.formatDate(vo.getFlihgtDate().getTime()));
+		dow.textProperty().set(String.valueOf(vo.getDow()));
+		takeoffFuel.textProperty().set(String.valueOf(vo.getTakeoffFuel()));
+		tripFuel.textProperty().set(String.valueOf(vo.getTripFuel()));
 		flightSect.textProperty().set(vo.getFlightSect());
-		crag.textProperty().set(vo.getCrag());
-		ver.textProperty().set(vo.getVer());
+		crew.textProperty().set(vo.getCrew());
+		doi.textProperty().set(String.valueOf(vo.getDoi()));
+		takeoffFuelIndex.textProperty().set(String.valueOf(vo.getTakeoffFuelIndex()));
+		loadingFuelIndex.textProperty().set(String.valueOf(vo.getLoadingFuelIndex()));
+		ver.textProperty().set(String.valueOf(vo.getVer()));
 	}
 }

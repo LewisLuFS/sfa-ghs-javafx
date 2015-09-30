@@ -1,6 +1,7 @@
 package com.sfa.ghs.controller.lab;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import org.springframework.stereotype.Component;
@@ -23,16 +24,19 @@ public class DemoController extends BaseController {
 
 	private void initFlightInfo() {
 		FlightInfoVO vo = new FlightInfoVO();
-		vo.setAcNo("B2899");
-		vo.setFlightNo("O31234");
-		vo.setFlihgtDate("2015-01-01");
-		vo.setDow("1234");
-		vo.setOilBegin("16189");
-		vo.setOilValue("9798");
-		vo.setMlw("11111");
+
+		vo.setAcRegNo("B2899");
+		vo.setFlightNo("O32121");
+		vo.setFlihgtDate(new Date());
+		vo.setDow(32321);
+		vo.setTakeoffFuel(45612);
+		vo.setTripFuel(9876);
 		vo.setFlightSect("SZX-HGH");
-		vo.setCrag("3/0");
-		vo.setVer("5");
+		vo.setCrew("3/0");
+		vo.setDoi(8.2);
+		vo.setTakeoffFuelIndex(7.3);
+		vo.setLoadingFuelIndex(5.3);
+		vo.setVer(5);
 
 		this.flightInfo.initData(vo);
 	}
