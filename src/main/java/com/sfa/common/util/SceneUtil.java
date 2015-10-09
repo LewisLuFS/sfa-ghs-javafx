@@ -30,9 +30,9 @@ public class SceneUtil {
 		BaseController.mainStage.setScene(scene);
 		BaseController.mainStage.centerOnScreen();
 		BaseController.mainStage.sizeToScene();
-		BaseController.mainStage.setAlwaysOnTop(true);
 		BaseController.mainStage.setTitle(fxmlEnum.getTitle());
 		BaseController.mainStage.setResizable(fxmlEnum.isResizable());
+		BaseController.mainStage.setMaximized(false);
 	}
 
 	public static final void openScene(FxmlEnum fxmlEnum) throws SfaException, IOException {

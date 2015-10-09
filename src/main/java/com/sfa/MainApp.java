@@ -37,6 +37,7 @@ public class MainApp extends Application {
 	public void gotoMainView() {
 		try {
 			SceneUtil.initScene(FxmlEnum.main);
+			BaseController.mainStage.setMaximized(true);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

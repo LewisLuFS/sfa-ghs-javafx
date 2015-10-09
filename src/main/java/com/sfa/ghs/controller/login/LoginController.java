@@ -25,7 +25,6 @@ import javafx.scene.text.Text;
  */
 @Component
 public class LoginController extends BaseController {
-
 	@FXML
 	private TextField loginName;
 	@FXML
@@ -34,10 +33,10 @@ public class LoginController extends BaseController {
 	private Button loginBtn;
 	@FXML
 	private Text errorMessage;
-	
+
 	/**
 	 * Initializes the controller class.
-	 *
+	 * 
 	 * @param url
 	 * @param rb
 	 */

@@ -35,7 +35,7 @@ public class MainController extends BaseController {
 
 	/**
 	 * Initializes the controller class.
-	 *
+	 * 
 	 * @param url
 	 * @param rb
 	 */
@@ -86,7 +86,7 @@ public class MainController extends BaseController {
 
 	/**
 	 * 退出登录
-	 *
+	 * 
 	 * @param event
 	 */
 	@FXML
