@@ -28,11 +28,21 @@ public class SceneUtil {
 		Parent root = initLoader(fxmlEnum.getFile()).load();
 		Scene scene = new Scene(root, fxmlEnum.getWidth(), fxmlEnum.getHeight());
 		BaseController.mainStage.setScene(scene);
-		BaseController.mainStage.centerOnScreen();
-		BaseController.mainStage.sizeToScene();
+
 		BaseController.mainStage.setTitle(fxmlEnum.getTitle());
 		BaseController.mainStage.setResizable(fxmlEnum.isResizable());
-		BaseController.mainStage.setMaximized(false);
+
+		if (fxmlEnum.isMaximized()) {
+			BaseController.mainStage.sizeToScene();
+			BaseController.mainStage.centerOnScreen();
+
+			BaseController.mainStage.setMaximized(fxmlEnum.isMaximized());
+		} else {
+			BaseController.mainStage.setMaximized(fxmlEnum.isMaximized());
+
+			BaseController.mainStage.sizeToScene();
+			BaseController.mainStage.centerOnScreen();
+		}
 	}
 
 	public static final void openScene(FxmlEnum fxmlEnum) throws SfaException, IOException {
@@ -101,5 +111,5 @@ public class SceneUtil {
 		return loader;
 	}
 
-	public static final ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	private static final ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 }

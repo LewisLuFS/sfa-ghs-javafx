@@ -12,7 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
-	public final static Logger logger = Logger.getLogger(MainApp.class);
+	public static final Logger logger = Logger.getLogger(MainApp.class);
 
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -37,7 +37,6 @@ public class MainApp extends Application {
 	public void gotoMainView() {
 		try {
 			SceneUtil.initScene(FxmlEnum.main);
-			BaseController.mainStage.setMaximized(true);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

@@ -44,3 +44,8 @@
 .labelContent {
 	-fx-text-fill: DEEPPINK;
 }
+
+.uldBox {
+	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
+	-fx-background-color: WHITE;
+}

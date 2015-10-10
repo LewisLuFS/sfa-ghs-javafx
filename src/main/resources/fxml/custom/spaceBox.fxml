@@ -1,0 +1,10 @@
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="VBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
+	<Label fx:id="space" />
+
+	<HBox fx:id="uldBox" spacing="2" styleClass="uldBox" />
+</fx:root>

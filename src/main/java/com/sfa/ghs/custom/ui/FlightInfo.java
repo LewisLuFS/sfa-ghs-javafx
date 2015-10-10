@@ -2,19 +2,28 @@ package com.sfa.ghs.custom.ui;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
+import com.sfa.common.exception.SfaException;
 import com.sfa.common.util.DateUtil;
 import com.sfa.ghs.custom.data.UIEnum;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
+/**
+ * 自定义组件：航班信息
+ * 
+ * @author 431520
+ */
 public class FlightInfo extends VBox {
+	public static final Logger log = Logger.getLogger(FlightInfo.class);
+
 	@FXML
 	private Label acRegNo;
 	@FXML
@@ -47,24 +56,22 @@ public class FlightInfo extends VBox {
 	private Label ver;
 
 	public FlightInfo() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(UIEnum.WB_FLIGHT_INFO.getFile()));
-		fxmlLoader.setRoot(this);
-		fxmlLoader.setController(this);
-
 		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(UIEnum.WB_FLIGHT_INFO.getFile()));
+			fxmlLoader.setRoot(this);
+			fxmlLoader.setController(this);
 			fxmlLoader.load();
-			initialize();
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
+		} catch (IOException e) {
+			log.error(e);
+			throw new SfaException(e);
 		}
 	}
 
-	private void initialize() {
-		this.setSpacing(2);
-		this.setPadding(new Insets(2, 5, 2, 5));
-		this.getStyleClass().setAll("vBox");
-	}
-
+	/**
+	 * 初始化航班信息
+	 * 
+	 * @param vo
+	 */
 	public void initData(FlightInfoVO vo) {
 		acRegNo.textProperty().set(vo.getAcRegNo());
 		flightNo.textProperty().set(vo.getFlightNo());

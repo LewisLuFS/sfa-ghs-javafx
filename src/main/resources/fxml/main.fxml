@@ -23,7 +23,7 @@
 	</top>
 
 	<left>
-		<TreeView fx:id="treeView" prefWidth="180" />
+		<TreeView fx:id="treeView" prefWidth="130" />
 	</left>
 
 	<center>

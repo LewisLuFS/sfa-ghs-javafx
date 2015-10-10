@@ -2,9 +2,12 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<fx:root type="VBox" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="VBox" spacing="2" styleClass="vBox" xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets left="5" right="5" top="2" bottom="2" />
+	</padding>
+
 	<GridPane vgap="0" hgap="2" gridLinesVisible="false">
 		<!-- First Row -->
 		<Label GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="labelTitle" text="飞机号" />
@@ -53,7 +56,7 @@
 		<!-- Third Row -->
 		<Label GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="labelTitle" text="版本" />
 		<Label GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="labelContent" fx:id="ver" />
-		
+
 		<Label GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.columnSpan="2" styleClass="labelTitle" text="特别提醒" />
 		<TextField GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.columnSpan="10" HBox.hgrow="SOMETIMES" />
 

@@ -8,13 +8,14 @@
 <?import javafx.scene.text.*?>
 <?import com.sfa.ghs.custom.ui.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfa.ghs.controller.lab.DemoController"
-	spacing="0">
+<VBox spacing="2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfa.ghs.controller.lab.DemoController">
 	<padding>
 		<Insets left="0" right="0" top="0" bottom="0" />
 	</padding>
 
 	<FlightInfo fx:id="flightInfo" />
+
+	<LoadingInfo fx:id="loadingInfo" />
 
 	<stylesheets>
 		<URL value="@/css/default.css" />
