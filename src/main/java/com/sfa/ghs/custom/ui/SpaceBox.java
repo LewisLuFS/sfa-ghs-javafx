@@ -45,11 +45,18 @@ public class SpaceBox extends VBox {
 	public void setSpace(String value) {
 		spaceProperty().set(value);
 	}
-	
-	public void setHBox(int num) {
+
+	public void setUld() {
+		UldBox uld = new UldBox();
+		uld.getStyleClass().add("emptyBox");
+		this.uldBox.getChildren().add(uld);
+	}
+
+	public void setBulk(int num) {
 		for (int i = 1; i <= num; i++) {
-			UldBox uldBox = new UldBox();
-			this.uldBox.getChildren().add(uldBox);
+			BulkBox bulk = new BulkBox();
+			bulk.getStyleClass().add("emptyBox");
+			this.uldBox.getChildren().add(bulk);
 		}
 	}
 }

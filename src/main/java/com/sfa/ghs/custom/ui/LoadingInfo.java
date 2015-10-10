@@ -8,12 +8,16 @@ import org.apache.log4j.Logger;
 import com.sfa.common.exception.SfaException;
 import com.sfa.ghs.custom.data.UIEnum;
 import com.sfa.ghs.custom.vo.SpaceItemVO;
-import com.sfa.ghs.custom.vo.SpaceVO;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 
+/**
+ * 配载区
+ * 
+ * @author 431520
+ */
 public class LoadingInfo extends HBox {
 	public static final Logger log = Logger.getLogger(LoadingInfo.class);
 
@@ -36,18 +40,28 @@ public class LoadingInfo extends HBox {
 		}
 	}
 
-	public void initData(SpaceVO vo) {
-		initSpace(mainSpace, vo.getMainSpaces());
-		initSpace(fwdSpace, vo.getFwdSpaces());
-		initSpace(aftSpace, vo.getAftSpaces());
-	}
-
-	private void initSpace(HBox parent, List<SpaceItemVO> voList) {
-		for (SpaceItemVO itemVO : voList) {
+	/**
+	 * 根据飞机舱位数据初始化舱位布局
+	 * 
+	 * @param vo
+	 *            飞机舱位数据
+	 */
+	public void initBaseInfo(List<SpaceItemVO> vos) {
+		for (SpaceItemVO vo : vos) {
 			SpaceBox space = new SpaceBox();
-			space.setSpace(itemVO.getName());
-			space.setHBox(itemVO.getNum());
-			parent.getChildren().add(space);
+			space.setSpace(vo.getSpaceName());
+			if (vo.getSpaceType().equals("ULD")) {
+				space.setUld();
+				mainSpace.getChildren().add(space);
+			} else if (vo.getSpaceType().equals("BULK_FWD")) {
+				space.setBulk(vo.getLoadAmount());
+				fwdSpace.getChildren().add(space);
+			} else if (vo.getSpaceType().equals("BULK_AFT")) {
+				space.setBulk(vo.getLoadAmount());
+				aftSpace.getChildren().add(space);
+			} else {
+				log.info("舱位类型[" + vo.getSpaceType() + "]错误，初始化时已忽略");
+			}
 		}
 	}
 }

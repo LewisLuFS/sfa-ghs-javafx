@@ -56,3 +56,14 @@
 .whiteBox {
 	-fx-background-color: WHITE;
 }
+
+.uldBox {
+	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
+}
+
+.emptyBox {
+	-fx-background-color: WHITE;
+	-fx-pref-width: 70px;
+	-fx-pref-height: 100px;
+}
+

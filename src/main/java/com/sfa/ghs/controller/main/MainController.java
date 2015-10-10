@@ -12,6 +12,7 @@ import com.sfa.common.util.StringUtil;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeItem;
@@ -82,6 +83,7 @@ public class MainController extends BaseController {
 				}
 			}
 		});
+		treeView.setCursor(Cursor.HAND);
 	}
 
 	/**

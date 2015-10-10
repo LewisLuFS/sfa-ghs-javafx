@@ -5,9 +5,7 @@
 
 <fx:root type="VBox" alignment="CENTER" styleClass="whiteBox"
 	xmlns:fx="http://javafx.com/fxml">
-	<Label fx:id="uldType" />
 	<Label fx:id="uldNo" />
-	<Label fx:id="uldCarrier" />
 	<Label fx:id="weight" />
 	<Label fx:id="dest" />
 </fx:root>

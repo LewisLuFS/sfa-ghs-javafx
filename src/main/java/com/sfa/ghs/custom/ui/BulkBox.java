@@ -13,23 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class UldBox extends VBox {
-	public static final Logger log = Logger.getLogger(UldBox.class);
+public class BulkBox extends VBox {
+	public static final Logger log = Logger.getLogger(BulkBox.class);
 
 	@FXML
-	private Label uldType;
-	@FXML
 	private Label uldNo;
-	@FXML
-	private Label uldCarrier;
 	@FXML
 	private Label weight;
 	@FXML
 	private Label dest;
 
-	public UldBox() {
+	public BulkBox() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(UIEnum.WB_ULD_BOX.getFile()));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(UIEnum.WB_BULK_BOX.getFile()));
 			fxmlLoader.setRoot(this);
 			fxmlLoader.setController(this);
 			fxmlLoader.load();
@@ -39,16 +35,8 @@ public class UldBox extends VBox {
 		}
 	}
 
-	public StringProperty uldTypeProperty() {
-		return uldType.textProperty();
-	}
-
 	public StringProperty uldNoProperty() {
 		return uldNo.textProperty();
-	}
-
-	public StringProperty uldCarrierProperty() {
-		return uldCarrier.textProperty();
 	}
 
 	public StringProperty weightProperty() {
@@ -60,13 +48,11 @@ public class UldBox extends VBox {
 	}
 
 	public String getUldNo() {
-		return uldTypeProperty().get() + uldNoProperty().get() + uldCarrierProperty().get();
+		return uldNoProperty().get();
 	}
 
 	public void setUldNo(String value) {
-		uldTypeProperty().set(value.substring(0, 3));
-		uldNoProperty().set(value.substring(3, value.length() - 2));
-		uldCarrierProperty().set(value.substring(value.length() - 2));
+		uldNoProperty().set(value);
 	}
 
 	public String getWeight() {

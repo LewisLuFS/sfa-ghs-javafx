@@ -11,9 +11,10 @@ import org.springframework.stereotype.Component;
 import com.sfa.common.controller.BaseController;
 import com.sfa.ghs.custom.ui.FlightInfo;
 import com.sfa.ghs.custom.ui.LoadingInfo;
+import com.sfa.ghs.custom.ui.LoadingToDoInfo;
+import com.sfa.ghs.custom.vo.BRItemVO;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
 import com.sfa.ghs.custom.vo.SpaceItemVO;
-import com.sfa.ghs.custom.vo.SpaceVO;
 
 import javafx.fxml.FXML;
 
@@ -23,11 +24,14 @@ public class DemoController extends BaseController {
 	private FlightInfo flightInfo;
 	@FXML
 	private LoadingInfo loadingInfo;
+	@FXML
+	private LoadingToDoInfo loadingToDoInfo;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.flightInfo.initData(this.getFlightVO());
-		this.loadingInfo.initData(this.getSpaceVO());
+		this.loadingInfo.initBaseInfo(this.getSpaceItemVOs());
+		this.loadingToDoInfo.initData(this.getBRItemVOs());
 	}
 
 	private FlightInfoVO getFlightVO() {
@@ -49,36 +53,54 @@ public class DemoController extends BaseController {
 		return vo;
 	}
 
-	private SpaceVO getSpaceVO() {
-		SpaceVO vo = new SpaceVO();
+	private List<SpaceItemVO> getSpaceItemVOs() {
+		List<SpaceItemVO> result = new ArrayList<SpaceItemVO>();
 
-		List<SpaceItemVO> mainSpaces = new ArrayList<SpaceItemVO>();
 		for (int i = 1; i <= 14; i++) {
-			SpaceItemVO itemVO = new SpaceItemVO("C" + i, 1);
-			mainSpaces.add(itemVO);
+			SpaceItemVO itemVO = new SpaceItemVO("ULD", "C" + i, (3000 + i), 1);
+			result.add(itemVO);
 		}
-		vo.setMainSpaces(mainSpaces);
 
-		List<SpaceItemVO> fwdSpaces = new ArrayList<SpaceItemVO>();
 		for (int i = 1; i <= 3; i++) {
-			SpaceItemVO itemVO = new SpaceItemVO("F" + i, 1);
+			SpaceItemVO itemVO = new SpaceItemVO("BULK_FWD", "F" + i, (300 + i), 1);
 			if (i == 3) {
-				itemVO.setNum(2);
+				itemVO.setLoadAmount(2);
 			}
-			fwdSpaces.add(itemVO);
+			result.add(itemVO);
 		}
-		vo.setFwdSpaces(fwdSpaces);
 
-		List<SpaceItemVO> aftSpaces = new ArrayList<SpaceItemVO>();
 		for (int i = 1; i <= 3; i++) {
-			SpaceItemVO itemVO = new SpaceItemVO("A" + i, 1);
+			SpaceItemVO itemVO = new SpaceItemVO("BULK_AFT", "A" + i, (350 + i), 1);
 			if (i == 1) {
-				itemVO.setNum(4);
+				itemVO.setLoadAmount(3);
 			}
-			aftSpaces.add(itemVO);
+			result.add(itemVO);
 		}
-		vo.setAftSpaces(aftSpaces);
 
-		return vo;
+		return result;
+	}
+
+	private List<BRItemVO> getBRItemVOs() {
+		List<BRItemVO> result = new ArrayList<BRItemVO>();
+
+		for (int i = 1; i <= 12; i++) {
+			BRItemVO vo = new BRItemVO();
+			vo.setUldNo("PAG" + (12300 + i) + "O3");
+			vo.setWeight(2000 + i);
+			vo.setDest("HGH");
+			vo.setType("ULD");
+			result.add(vo);
+		}
+
+		for (int i = 1; i <= 7; i++) {
+			BRItemVO vo = new BRItemVO();
+			vo.setUldNo("S" + (100 + i));
+			vo.setWeight(200 + i);
+			vo.setDest("PEK");
+			vo.setType("BULK");
+			result.add(vo);
+		}
+
+		return result;
 	}
 }

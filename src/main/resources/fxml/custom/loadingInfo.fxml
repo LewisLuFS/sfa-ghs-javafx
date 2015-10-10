@@ -3,12 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<!-- 配载区 -->
 <fx:root type="HBox" spacing="5" styleClass="vBox" alignment="CENTER"
 	xmlns:fx="http://javafx.com/fxml">
 	<padding>
 		<Insets left="0" right="0" top="2" bottom="2" />
 	</padding>
 
+	<!-- 前 -->
 	<Label text="FWD" />
 
 	<VBox spacing="5">
@@ -40,5 +42,6 @@
 		</HBox>
 	</VBox>
 
+	<!-- 后 -->
 	<Label text="AFT" />
 </fx:root>
