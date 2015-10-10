@@ -3,8 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="VBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
-	<Label fx:id="space" />
+<fx:root type="VBox" spacing="1" alignment="CENTER"
+	xmlns:fx="http://javafx.com/fxml">
+	<HBox alignment="CENTER" styleClass="defaultBox">
+		<Label fx:id="space" />
+	</HBox>
 
-	<HBox fx:id="uldBox" spacing="2" styleClass="uldBox" />
+	<HBox fx:id="uldBox" spacing="1" styleClass="defaultBox" />
 </fx:root>

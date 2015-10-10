@@ -3,27 +3,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="HBox" spacing="0" styleClass="vBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="HBox" spacing="5" styleClass="vBox" alignment="CENTER"
+	xmlns:fx="http://javafx.com/fxml">
 	<padding>
-		<Insets left="2" right="2" top="2" bottom="2" />
+		<Insets left="0" right="0" top="2" bottom="2" />
 	</padding>
 
 	<Label text="FWD" />
 
-	<VBox spacing="10">
+	<VBox spacing="5">
 		<padding>
 			<Insets left="2" right="2" top="0" bottom="0" />
 		</padding>
 
 		<!-- 主舱 -->
-		<HBox fx:id="mainSpace" spacing="0" />
+		<HBox fx:id="mainSpace" spacing="1" styleClass="blackBox">
+			<padding>
+				<Insets left="1" right="1" top="1" bottom="1" />
+			</padding>
+		</HBox>
 
 		<HBox>
 			<!-- 前腹舱 -->
-			<HBox fx:id="fwdSpace" spacing="0" />
+			<HBox fx:id="fwdSpace" spacing="1" styleClass="blackBox">
+				<padding>
+					<Insets left="1" right="1" top="1" bottom="1" />
+				</padding>
+			</HBox>
 			<Pane HBox.hgrow="ALWAYS" />
 			<!-- 后腹舱 -->
-			<HBox fx:id="aftSpace" spacing="0" />
+			<HBox fx:id="aftSpace" spacing="1" styleClass="blackBox">
+				<padding>
+					<Insets left="1" right="1" top="1" bottom="1" />
+				</padding>
+			</HBox>
 		</HBox>
 	</VBox>
 

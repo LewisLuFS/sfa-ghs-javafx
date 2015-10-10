@@ -45,7 +45,14 @@
 	-fx-text-fill: DEEPPINK;
 }
 
-.uldBox {
-	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
+.blackBox {
+	-fx-background-color: BLACK;
+}
+
+.defaultBox {
+	-fx-background-color: #C8C8C8;
+}
+
+.whiteBox {
 	-fx-background-color: WHITE;
 }
