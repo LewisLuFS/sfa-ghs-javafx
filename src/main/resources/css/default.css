@@ -62,21 +62,45 @@
 }
 .-fx-loading-shape-uld {
 	-fx-background-color: WHITE;
+	-fx-alignment: CENTER;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 95px;
 }
 .-fx-loading-shape-bulk {
 	-fx-background-color: WHITE;
+	-fx-alignment: CENTER;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 85px;
 }
 
 /* 待配载区 */
-.whiteBox {
-	-fx-background-color: WHITE;
+.-fx-loadingToDo {
+	-fx-border-width: 2;
+	-fx-border-color: BLACK;
+	-fx-padding: 0 0 0 0;
 }
-
-.uldBox {
+.-fx-loadingToDo-flow {
+	-fx-pref-width: 353px;
+	-fx-vgap: 2;
+	-fx-hgap: 2;
+	-fx-padding: 5 0 5 5;
+}
+.-fx-loadingToDo-shape-uld {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
+	-fx-background-color: WHITE;
+	-fx-alignment: CENTER;
+	-fx-cursor: MOVE;
+	-fx-pref-width: 67px;
+	-fx-pref-height: 95px;
 }
-
+.-fx-loadingToDo-shape-bulk {
+	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
+	-fx-background-color: WHITE;
+	-fx-alignment: CENTER;
+	-fx-pref-width: 67px;
+	-fx-pref-height: 95px;
+}
+.-fx-loadingToDo-dropColor {
+	-fx-border-color: BLACK;
+	-fx-background-color: #F4F4F4;
+}

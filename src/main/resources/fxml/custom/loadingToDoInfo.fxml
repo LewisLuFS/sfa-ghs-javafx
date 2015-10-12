@@ -4,23 +4,15 @@
 <?import javafx.scene.layout.*?>
 
 <!-- 待配载区（来自组板/拼装单记录） -->
-<fx:root type="VBox" spacing="5" prefWidth="385" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="VBox" spacing="2" prefWidth="370"
+	xmlns:fx="http://javafx.com/fxml/1">
 	<!-- 待配载到主舱的板箱 -->
-	<ScrollPane prefHeight="210">
-		<FlowPane fx:id="uldToDo" vgap="2" hgap="2" prefWidth="370">
-			<padding>
-				<Insets left="6" right="6" top="6" bottom="6" />
-			</padding>
-		</FlowPane>
+	<ScrollPane prefHeight="200" styleClass="-fx-loadingToDo">
+		<FlowPane fx:id="uldToDo" styleClass="-fx-loadingToDo-flow" />
 	</ScrollPane>
 
 	<!-- 待配载到腹舱的散卡 -->
-	<ScrollPane prefHeight="100">
-		<FlowPane fx:id="bulkToDo" vgap="2" hgap="2" prefWidth="370">
-			<padding>
-				<Insets left="5" right="5" top="5" bottom="5" />
-			</padding>
-		</FlowPane>
+	<ScrollPane prefHeight="130" styleClass="-fx-loadingToDo">
+		<FlowPane fx:id="bulkToDo" styleClass="-fx-loadingToDo-flow" />
 	</ScrollPane>
 </fx:root>
-

@@ -1,6 +1,7 @@
 package com.sfa.ghs.custom.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import com.sfa.ghs.custom.vo.BRItemVO;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
@@ -44,7 +46,7 @@ public class LoadingToDoInfo extends VBox {
 
 				uldToDo.getChildren().add(uldBox);
 
-				uldBox.getStyleClass().add("uldBox");
+				uldBox.getStyleClass().add("-fx-loadingToDo-shape-uld");
 			} else {
 				BulkBox bulkBox = new BulkBox();
 				bulkBox.setUldNo(vo.getUldNo());
@@ -53,8 +55,32 @@ public class LoadingToDoInfo extends VBox {
 
 				bulkToDo.getChildren().add(bulkBox);
 
-				bulkBox.getStyleClass().add("uldBox");
+				bulkBox.getStyleClass().add("-fx-loadingToDo-shape-bulk");
 			}
 		}
+	}
+
+	public List<UldBox> getLoadingToDoUlds() {
+		List<UldBox> result = new ArrayList<UldBox>();
+
+		for (Node node : this.uldToDo.getChildren()) {
+			if (node instanceof UldBox) {
+				result.add((UldBox) node);
+			}
+		}
+
+		return result;
+	}
+
+	public List<BulkBox> getLoadingToDoBulks() {
+		List<BulkBox> result = new ArrayList<BulkBox>();
+
+		for (Node node : this.bulkToDo.getChildren()) {
+			if (node instanceof BulkBox) {
+				result.add((BulkBox) node);
+			}
+		}
+
+		return result;
 	}
 }

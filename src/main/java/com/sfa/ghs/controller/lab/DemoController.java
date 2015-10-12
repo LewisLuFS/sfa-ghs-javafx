@@ -9,14 +9,19 @@ import java.util.ResourceBundle;
 import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
+import com.sfa.ghs.custom.ui.BulkBox;
 import com.sfa.ghs.custom.ui.FlightInfo;
 import com.sfa.ghs.custom.ui.LoadingInfo;
 import com.sfa.ghs.custom.ui.LoadingToDoInfo;
+import com.sfa.ghs.custom.ui.UldBox;
 import com.sfa.ghs.custom.vo.BRItemVO;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
 import com.sfa.ghs.custom.vo.SpaceItemVO;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 
 @Component
 public class DemoController extends BaseController {
@@ -27,11 +32,72 @@ public class DemoController extends BaseController {
 	@FXML
 	private LoadingToDoInfo loadingToDoInfo;
 
+	private double initX;
+	private double initY;
+	private Point2D dragAnchor;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.flightInfo.initData(this.getFlightVO());
 		this.loadingInfo.initBaseInfo(this.getSpaceItemVOs());
 		this.loadingToDoInfo.initData(this.getBRItemVOs());
+		this.mouseClick();
+	}
+
+	private void mouseClick() {
+		List<UldBox> uldToDos = this.loadingToDoInfo.getLoadingToDoUlds();
+		for (UldBox uldToDo : uldToDos) {
+			this.mouseClick(uldToDo);
+		}
+		List<BulkBox> bulkToDos = this.loadingToDoInfo.getLoadingToDoBulks();
+		for (BulkBox bulkBox : bulkToDos) {
+			this.mouseClick(bulkBox);
+		}
+	}
+
+	/**
+	 * 节点鼠标点击事件
+	 * 
+	 * @param node
+	 */
+	private void mouseClick(Node node) {
+		// 鼠标动作：移入-按下-拖动-弹起-移出
+		// 鼠标移入
+		node.setOnMouseEntered((MouseEvent me) -> {
+			node.getStyleClass().add("-fx-loadingToDo-dropColor");
+		});
+		// 鼠标按下
+		node.setOnMousePressed((MouseEvent me) -> {
+			initX = node.getTranslateX();
+			initY = node.getTranslateY();
+			dragAnchor = new Point2D(me.getSceneX(), me.getSceneY());
+		});
+		// 鼠标拖动
+		node.setOnMouseDragged((MouseEvent me) -> {
+			double dragX = me.getSceneX() - dragAnchor.getX();
+			double dragY = me.getSceneY() - dragAnchor.getY();
+			// calculate new position of the circle
+			double newXPosition = initX + dragX;
+			double newYPosition = initY + dragY;
+			// if new position do not exceeds borders of the rectangle,
+			// translate to this position
+
+			node.setTranslateX(newXPosition);
+			node.setTranslateY(newYPosition);
+		});
+		// 鼠标弹起
+		node.setOnMouseReleased((MouseEvent me) -> {
+			node.setTranslateX(initX);
+			node.setTranslateY(initY);
+		});
+		// 鼠标Click完成
+		node.setOnMouseClicked((MouseEvent me) -> {
+			me.consume();
+		});
+		// 鼠标移出
+		node.setOnMouseExited((MouseEvent me) -> {
+			node.getStyleClass().remove("-fx-loadingToDo-dropColor");
+		});
 	}
 
 	private FlightInfoVO getFlightVO() {
