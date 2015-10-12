@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="VBox" spacing="2" styleClass="vBox" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="VBox" spacing="2" styleClass="-fx-area-border" xmlns:fx="http://javafx.com/fxml">
 	<padding>
-		<Insets left="5" right="5" top="2" bottom="2" />
+		<Insets left="5" right="5" top="2" bottom="0" />
 	</padding>
 
 	<GridPane vgap="0" hgap="2" gridLinesVisible="false">

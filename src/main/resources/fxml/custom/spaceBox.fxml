@@ -7,10 +7,10 @@
 <fx:root type="VBox" spacing="1" alignment="CENTER"
 	xmlns:fx="http://javafx.com/fxml">
 	<!-- 舱位名 -->
-	<HBox alignment="CENTER" styleClass="defaultBox">
+	<HBox alignment="CENTER" styleClass="-fx-loading-separator">
 		<Label fx:id="space" />
 	</HBox>
 
 	<!-- 集装器（ULD编号、毛重、目的地） -->
-	<HBox fx:id="uldBox" spacing="1" styleClass="defaultBox" />
+	<HBox fx:id="uldBox" spacing="1" styleClass="-fx-loading-separator" />
 </fx:root>

@@ -33,37 +33,50 @@
 /**
  * 普通页面
  */
-.vBox {
-	-fx-border-color: #C8C8C8 #F4F4F4 #C8C8C8 #F4F4F4;
-}
-
 .labelTitle {
 	-fx-text-fill: BLACK;
 }
-
 .labelContent {
 	-fx-text-fill: DEEPPINK;
 }
-
-.blackBox {
-	-fx-background-color: BLACK;
+.-fx-area-border {
+	-fx-border-color: #C8C8C8 #F4F4F4 #F4F4F4 #F4F4F4;
 }
 
-.defaultBox {
+/* 配载区 */
+.-fx-loading {
+	-fx-border-radius: 30;
+	-fx-border-width: 2;
+	-fx-border-color: BLACK;
+	-fx-alignment: CENTER;
+	-fx-spacing: 5;
+	-fx-padding: 5 0 5 0;
+}
+.-fx-loading-border {
+	-fx-background-color: BLACK;
+	-fx-spacing: 1px;
+	-fx-padding: 1px;
+}
+.-fx-loading-separator {
 	-fx-background-color: #C8C8C8;
 }
+.-fx-loading-shape-uld {
+	-fx-background-color: WHITE;
+	-fx-pref-width: 67px;
+	-fx-pref-height: 95px;
+}
+.-fx-loading-shape-bulk {
+	-fx-background-color: WHITE;
+	-fx-pref-width: 67px;
+	-fx-pref-height: 85px;
+}
 
+/* 待配载区 */
 .whiteBox {
 	-fx-background-color: WHITE;
 }
 
 .uldBox {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
-}
-
-.emptyBox {
-	-fx-background-color: WHITE;
-	-fx-pref-width: 70px;
-	-fx-pref-height: 100px;
 }
 

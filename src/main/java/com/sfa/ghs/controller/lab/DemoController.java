@@ -56,24 +56,28 @@ public class DemoController extends BaseController {
 	private List<SpaceItemVO> getSpaceItemVOs() {
 		List<SpaceItemVO> result = new ArrayList<SpaceItemVO>();
 
-		for (int i = 1; i <= 14; i++) {
+		for (int i = 1; i <= 15; i++) {
 			SpaceItemVO itemVO = new SpaceItemVO("ULD", "C" + i, (3000 + i), 1);
 			result.add(itemVO);
 		}
 
 		for (int i = 1; i <= 3; i++) {
 			SpaceItemVO itemVO = new SpaceItemVO("BULK_FWD", "F" + i, (300 + i), 1);
-			if (i == 3) {
+			if (i == 1) {
+				itemVO.setSpaceName("HOLD1a");
 				itemVO.setLoadAmount(2);
+			} else if (i == 2) {
+				itemVO.setSpaceName("HOLD1b");
+				itemVO.setLoadAmount(2);
+			} else {
+				itemVO.setSpaceName("HOLD2");
+				itemVO.setLoadAmount(3);
 			}
 			result.add(itemVO);
 		}
 
-		for (int i = 1; i <= 3; i++) {
-			SpaceItemVO itemVO = new SpaceItemVO("BULK_AFT", "A" + i, (350 + i), 1);
-			if (i == 1) {
-				itemVO.setLoadAmount(3);
-			}
+		for (int i = 1; i <= 2; i++) {
+			SpaceItemVO itemVO = new SpaceItemVO("BULK_AFT", "HOLD" + (2 + i), (350 + i), 3);
 			result.add(itemVO);
 		}
 

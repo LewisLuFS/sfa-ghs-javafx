@@ -4,41 +4,24 @@
 <?import javafx.scene.layout.*?>
 
 <!-- 配载区 -->
-<fx:root type="HBox" spacing="5" styleClass="vBox" alignment="CENTER"
-	xmlns:fx="http://javafx.com/fxml">
-	<padding>
-		<Insets left="0" right="0" top="2" bottom="2" />
-	</padding>
-
+<fx:root type="HBox" styleClass="-fx-loading" xmlns:fx="http://javafx.com/fxml">
 	<!-- 前 -->
 	<Label text="FWD" />
 
 	<VBox spacing="5">
 		<padding>
-			<Insets left="2" right="2" top="0" bottom="0" />
+			<Insets left="0" right="0" top="0" bottom="0" />
 		</padding>
 
 		<!-- 主舱 -->
-		<HBox fx:id="mainSpace" spacing="1" styleClass="blackBox">
-			<padding>
-				<Insets left="1" right="1" top="1" bottom="1" />
-			</padding>
-		</HBox>
+		<HBox fx:id="mainSpace" styleClass="-fx-loading-border" />
 
 		<HBox>
 			<!-- 前腹舱 -->
-			<HBox fx:id="fwdSpace" spacing="1" styleClass="blackBox">
-				<padding>
-					<Insets left="1" right="1" top="1" bottom="1" />
-				</padding>
-			</HBox>
+			<HBox fx:id="fwdSpace" styleClass="-fx-loading-border" />
 			<Pane HBox.hgrow="ALWAYS" />
 			<!-- 后腹舱 -->
-			<HBox fx:id="aftSpace" spacing="1" styleClass="blackBox">
-				<padding>
-					<Insets left="1" right="1" top="1" bottom="1" />
-				</padding>
-			</HBox>
+			<HBox fx:id="aftSpace" styleClass="-fx-loading-border" />
 		</HBox>
 	</VBox>
 

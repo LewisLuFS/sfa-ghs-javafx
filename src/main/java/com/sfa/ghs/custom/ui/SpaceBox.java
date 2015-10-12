@@ -48,14 +48,14 @@ public class SpaceBox extends VBox {
 
 	public void setUld() {
 		UldBox uld = new UldBox();
-		uld.getStyleClass().add("emptyBox");
+		uld.getStyleClass().add("-fx-loading-shape-uld");
 		this.uldBox.getChildren().add(uld);
 	}
 
 	public void setBulk(int num) {
 		for (int i = 1; i <= num; i++) {
 			BulkBox bulk = new BulkBox();
-			bulk.getStyleClass().add("emptyBox");
+			bulk.getStyleClass().add("-fx-loading-shape-bulk");
 			this.uldBox.getChildren().add(bulk);
 		}
 	}
