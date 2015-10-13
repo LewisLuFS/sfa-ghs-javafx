@@ -3,15 +3,15 @@ package com.sfa.common.data;
 public enum MenuEnum {
 	// 文件
 	FILE_LOGOUT("文件", MenuTypeEnum.COMMAND, "logout", "重新登录", null, "logout", "Ctrl+L"),
-	FILE_SEPARATOR_01("文件", "separator_01"),
+	SEPARATOR_01("文件", "separator_01"),
 	FILE_EXIT("文件", MenuTypeEnum.COMMAND, "exit", "退出", null, "exit", "Alt+X"),
 
 	// 配载
 	WB_FLIGHT("配载", MenuTypeEnum.PAGE, "flight", "航班列表", null, "/fxml/wb/flight.fxml"),
-	FILE_SEPARATOR_02("配载", "separator_02"),
+	SEPARATOR_02("配载", "separator_02"),
 	WB_PRE("配载", MenuTypeEnum.PAGE, "", "转板预配", null, ""),
 	WB_PRE2("配载", MenuTypeEnum.PAGE, "", "转板预配还原", null, ""),
-	FILE_SEPARATOR_03("配载", "separator_03"),
+	SEPARATOR_03("配载", "separator_03"),
 	WB_CARGE("配载", MenuTypeEnum.PAGE, "", "货邮舱单", null, ""),
 
 	// 实验室

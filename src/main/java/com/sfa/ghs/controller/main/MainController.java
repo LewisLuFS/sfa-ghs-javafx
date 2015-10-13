@@ -74,6 +74,9 @@ public class MainController extends BaseController {
 				} else if (m.getMenuType().equals(MenuTypeEnum.COMMAND)) {
 					if (m.getContent().equals("exit")) {
 						System.exit(0);
+					} else if (m.getContent().equals("logout")) {
+						LocalManager.cleanUser();
+						LocalManager.getApp().gotoLoginView();
 					}
 					System.out.println(m.getName() + ", command");
 				}
