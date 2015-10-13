@@ -1,60 +1,103 @@
 package com.sfa.common.data;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-
 public enum MenuEnum {
-	// 配载管理
-	WB_FLIGHT("航班列表", "配载管理", ""),
-	WB_PRE_("转板预配", "配载管理", ""),
-	WB_abc("货邮舱单", "配载管理", ""),
+	// 文件
+	FILE_LOGOUT("文件", MenuTypeEnum.COMMAND, "logout", "重新登录", null, "logout", "Ctrl+L"),
+	FILE_SEPARATOR_01("文件", "separator_01"),
+	FILE_EXIT("文件", MenuTypeEnum.COMMAND, "exit", "退出", null, "exit", "Alt+X"),
+
+	// 配载
+	WB_FLIGHT("配载", MenuTypeEnum.PAGE, "flight", "航班列表", null, "/fxml/wb/flight.fxml"),
+	FILE_SEPARATOR_02("配载", "separator_02"),
+	WB_PRE("配载", MenuTypeEnum.PAGE, "", "转板预配", null, ""),
+	WB_PRE2("配载", MenuTypeEnum.PAGE, "", "转板预配还原", null, ""),
+	FILE_SEPARATOR_03("配载", "separator_03"),
+	WB_CARGE("配载", MenuTypeEnum.PAGE, "", "货邮舱单", null, ""),
 
 	// 实验室
-	LAB_DEMO("配载DEMO", "实验室", "/fxml/lab/demo.fxml"),
-	LAB_CRUD("单表CRUD", "实验室", "/fxml/lab/crud.fxml"),
-	LAB_ALERT("弹出框", "实验室", "/fxml/lab/alert.fxml"),
-	LAB_DROP("拖拉拽", "实验室", "/fxml/lab/drop.fxml"),
-	LAB_CUSTOMER_UI("自定义组件", "实验室", "/fxml/lab/customerUI.fxml"),
+	LAB_DEMO("实验室", MenuTypeEnum.PAGE, "demo", "配载DEMO", null, "/fxml/lab/demo.fxml"),
 
 	// 帮助
-	HELP_ABOUT("关于", "帮助", "/fxml/help/about.fxml");
+	HELP_ABOUT("帮助", MenuTypeEnum.ALERT, "about", "关于", null, "/fxml/help/about.fxml");
 
-	private String name;
 	private String parentName;
-	private String file;
+	private MenuTypeEnum menuType;
+	private String code;
+	private String name;
+	private String icon;
+	private String content;
+	private String accelerator;
 
-	private MenuEnum(String name, String parentName, String file) {
-		this.name = name;
-		this.parentName = parentName;
-		this.file = file;
+	/**
+	 * 分隔符菜单
+	 * 
+	 * @param parentName
+	 * @param code
+	 */
+	private MenuEnum(String parentName, String code) {
+		this(parentName, MenuTypeEnum.SEPARATOR, null, null, null, null, null);
 	}
 
-	public String getName() {
-		return name;
+	/**
+	 * 无快捷键菜单
+	 * 
+	 * @param parentName
+	 * @param code
+	 * @param name
+	 * @param menuType
+	 * @param content
+	 */
+	private MenuEnum(String parentName, MenuTypeEnum menuType, String code, String name, String icon, String content) {
+		this(parentName, menuType, code, name, icon, content, null);
+	}
+
+	/**
+	 * 普通菜单
+	 * 
+	 * @param parentName
+	 * @param menuType
+	 * @param code
+	 * @param name
+	 * @param icon
+	 * @param content
+	 * @param accelerator
+	 */
+	private MenuEnum(String parentName, MenuTypeEnum menuType, String code, String name, String icon, String content,
+			String accelerator) {
+		this.parentName = parentName;
+		this.menuType = menuType;
+		this.code = code;
+		this.name = name;
+		this.icon = icon;
+		this.content = content;
+		this.accelerator = accelerator;
 	}
 
 	public String getParentName() {
 		return parentName;
 	}
 
-	public String getFile() {
-		return file;
+	public MenuTypeEnum getMenuType() {
+		return menuType;
 	}
 
-	private static final Map<String, MenuEnum> lookup = new HashMap<String, MenuEnum>();
-
-	static {
-		for (MenuEnum menu : EnumSet.allOf(MenuEnum.class)) {
-			lookup.put(menu.getName(), menu);
-		}
+	public String getCode() {
+		return code;
 	}
 
-	public static MenuEnum find(String name, MenuEnum menuEnum) {
-		MenuEnum value = lookup.get(name);
-		if (value == null) {
-			return null;
-		}
-		return value;
+	public String getName() {
+		return name;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public String getAccelerator() {
+		return accelerator;
 	}
 }

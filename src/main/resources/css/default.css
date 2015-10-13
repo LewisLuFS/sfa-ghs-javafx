@@ -49,8 +49,8 @@
 	-fx-border-width: 2;
 	-fx-border-color: BLACK;
 	-fx-alignment: CENTER;
-	-fx-spacing: 5;
-	-fx-padding: 5 0 5 0;
+	-fx-spacing: 30;
+	-fx-padding: 5 5 5 5;
 }
 .-fx-loading-border {
 	-fx-background-color: BLACK;
@@ -65,12 +65,16 @@
 	-fx-alignment: CENTER;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 95px;
+	-fx-min-width: 67px;
+	-fx-min-height: 95px;
 }
 .-fx-loading-shape-bulk {
 	-fx-background-color: WHITE;
 	-fx-alignment: CENTER;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 85px;
+	-fx-min-width: 67px;
+	-fx-min-height: 85px;
 }
 
 /* 待配载区 */
@@ -92,6 +96,8 @@
 	-fx-cursor: MOVE;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 95px;
+	-fx-min-width: 67px;
+	-fx-min-height: 95px;
 }
 .-fx-loadingToDo-shape-bulk {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;

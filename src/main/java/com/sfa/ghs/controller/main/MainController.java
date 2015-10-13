@@ -7,83 +7,79 @@ import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
 import com.sfa.common.data.MenuEnum;
+import com.sfa.common.data.MenuTypeEnum;
 import com.sfa.common.manager.LocalManager;
 import com.sfa.common.util.StringUtil;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.text.Text;
+import javafx.scene.input.KeyCombination;
 
-/**
- * Main Controller class
- * 
- * @author 431520
- */
 @Component
 public class MainController extends BaseController {
-
 	@FXML
-	private Hyperlink name;
+	private MenuBar menuBar;
 	@FXML
 	private TabPane tabPane;
 	@FXML
-	private TreeView<String> treeView;
+	private Label name;
 
-	/**
-	 * Initializes the controller class.
-	 * 
-	 * @param url
-	 * @param rb
-	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// 设置用户
 		name.setText(LocalManager.getUser().getName());
 
 		// 设置菜单
-		this.initMenu();
+		this.initMenuBar();
 	}
 
-	private void initMenu() {
-		TreeItem<String> rootNode = new TreeItem<>("所有菜单");
-
-		for (MenuEnum menu : MenuEnum.values()) {
-			TreeItem<String> menuLeaf = new TreeItem<String>(menu.getName());
+	private void initMenuBar() {
+		for (MenuEnum m : MenuEnum.values()) {
 			boolean found = false;
-			for (TreeItem<String> menuNode : rootNode.getChildren()) {
-				if (menuNode.getValue().contentEquals(menu.getParentName())) {
-					menuNode.getChildren().add(menuLeaf);
+			for (Menu menu : this.menuBar.getMenus()) {
+				if (menu.getText().contentEquals(m.getParentName())) {
+					this.addMenuItem(menu, m);
 					found = true;
 					break;
 				}
 			}
 			if (!found) {
-				TreeItem<String> menuNode = new TreeItem<>(menu.getParentName());
-				rootNode.getChildren().add(menuNode);
-				menuNode.getChildren().add(menuLeaf);
-				menuNode.setExpanded(true);
+				Menu menu = new Menu(m.getParentName());
+				this.addMenuItem(menu, m);
+				this.menuBar.getMenus().add(menu);
 			}
 		}
+	}
 
-		treeView.setRoot(rootNode);
-		treeView.setShowRoot(false);
-		treeView.setOnMouseClicked(event -> {
-			if (event.getTarget() instanceof Text) {
-				Text menu = (Text) event.getTarget();
-
-				MenuEnum menuEnum = MenuEnum.find(menu.getText(), null);
-
-				if (null != menuEnum && StringUtil.isNotEmpty(menuEnum.getFile())) {
-					LocalManager.getApp().addTab(tabPane, menuEnum.getFile(), menuEnum.getName());
-				}
+	private void addMenuItem(Menu menu, MenuEnum m) {
+		if (m.getMenuType().equals(MenuTypeEnum.SEPARATOR)) {
+			SeparatorMenuItem menuItem = new SeparatorMenuItem();
+			menu.getItems().add(menuItem);
+		} else {
+			MenuItem menuItem = new MenuItem(m.getName());
+			if (StringUtil.isNotEmpty(m.getAccelerator())) {
+				menuItem.setAccelerator(KeyCombination.keyCombination(m.getAccelerator()));
 			}
-		});
-		treeView.setCursor(Cursor.HAND);
+			menuItem.setOnAction(event -> {
+				if (m.getMenuType().equals(MenuTypeEnum.ALERT)) {
+					System.out.println(m.getName() + ", alert");
+				} else if (m.getMenuType().equals(MenuTypeEnum.PAGE)) {
+					LocalManager.getApp().addTab(tabPane, m.getContent(), m.getName());
+				} else if (m.getMenuType().equals(MenuTypeEnum.COMMAND)) {
+					if (m.getContent().equals("exit")) {
+						System.exit(0);
+					}
+					System.out.println(m.getName() + ", command");
+				}
+			});
+			menu.getItems().add(menuItem);
+		}
 	}
 
 	/**
