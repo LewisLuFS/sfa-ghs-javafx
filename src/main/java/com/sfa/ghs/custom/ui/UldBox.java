@@ -84,4 +84,26 @@ public class UldBox extends VBox {
 	public void setDest(String value) {
 		destProperty().set(value);
 	}
+
+	public String getText() {
+		if ("".equals(this.getUldNo())) {
+			return "";
+		}
+		return "uldNo:" + this.getUldNo() + ",weight:" + this.getWeight() + ",dest:" + this.getDest();
+	}
+
+	public void setText(String text) {
+		for (String obj : text.split(",")) {
+			String key = obj.split(":")[0];
+			String value = obj.split(":")[1];
+
+			if (key.equals("uldNo")) {
+				this.setUldNo(value);
+			} else if (key.equals("weight")) {
+				this.setWeight(value);
+			} else if (key.equals("dest")) {
+				this.setDest(value);
+			}
+		}
+	}
 }

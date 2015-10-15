@@ -1,6 +1,7 @@
 package com.sfa.ghs.custom.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import com.sfa.ghs.custom.vo.SpaceItemVO;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 
 /**
@@ -63,5 +65,35 @@ public class LoadingInfo extends HBox {
 				log.info("舱位类型[" + vo.getSpaceType() + "]错误，初始化时已忽略");
 			}
 		}
+	}
+
+	public List<UldBox> getLoadingUlds() {
+		List<UldBox> result = new ArrayList<UldBox>();
+
+		for (Node node : this.mainSpace.getChildren()) {
+			if (node instanceof SpaceBox) {
+				result.add(((SpaceBox) node).getUld());
+			}
+		}
+
+		return result;
+	}
+
+	public List<BulkBox> getLoadingBulks() {
+		List<BulkBox> result = new ArrayList<BulkBox>();
+
+		for (Node node : this.fwdSpace.getChildren()) {
+			if (node instanceof SpaceBox) {
+				result.addAll(((SpaceBox) node).getBulks());
+			}
+		}
+
+		for (Node node : this.aftSpace.getChildren()) {
+			if (node instanceof SpaceBox) {
+				result.addAll(((SpaceBox) node).getBulks());
+			}
+		}
+
+		return result;
 	}
 }

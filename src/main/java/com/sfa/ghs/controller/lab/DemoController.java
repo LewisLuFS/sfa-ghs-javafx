@@ -19,9 +19,12 @@ import com.sfa.ghs.custom.vo.FlightInfoVO;
 import com.sfa.ghs.custom.vo.SpaceItemVO;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 
 @Component
 public class DemoController extends BaseController {
@@ -32,71 +35,105 @@ public class DemoController extends BaseController {
 	@FXML
 	private LoadingToDoInfo loadingToDoInfo;
 
-	private double initX;
-	private double initY;
-	private Point2D dragAnchor;
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.flightInfo.initData(this.getFlightVO());
 		this.loadingInfo.initBaseInfo(this.getSpaceItemVOs());
+		this.targetDrag();
+
 		this.loadingToDoInfo.initData(this.getBRItemVOs());
-		this.mouseClick();
+		this.sourceDrag();
 	}
 
-	private void mouseClick() {
+	private void sourceDrag() {
 		List<UldBox> uldToDos = this.loadingToDoInfo.getLoadingToDoUlds();
 		for (UldBox uldToDo : uldToDos) {
-			this.mouseClick(uldToDo);
+			this.sourceDrag(uldToDo);
 		}
+
 		List<BulkBox> bulkToDos = this.loadingToDoInfo.getLoadingToDoBulks();
 		for (BulkBox bulkBox : bulkToDos) {
-			this.mouseClick(bulkBox);
+			this.sourceDrag(bulkBox);
 		}
 	}
 
-	/**
-	 * 节点鼠标点击事件
-	 * 
-	 * @param node
-	 */
-	private void mouseClick(Node node) {
-		// 鼠标动作：移入-按下-拖动-弹起-移出
-		// 鼠标移入
-		node.setOnMouseEntered((MouseEvent me) -> {
-			node.getStyleClass().add("-fx-loadingToDo-dropColor");
-		});
-		// 鼠标按下
-		node.setOnMousePressed((MouseEvent me) -> {
-			initX = node.getTranslateX();
-			initY = node.getTranslateY();
-			dragAnchor = new Point2D(me.getSceneX(), me.getSceneY());
-		});
-		// 鼠标拖动
-		node.setOnMouseDragged((MouseEvent me) -> {
-			double dragX = me.getSceneX() - dragAnchor.getX();
-			double dragY = me.getSceneY() - dragAnchor.getY();
-			// calculate new position of the circle
-			double newXPosition = initX + dragX;
-			double newYPosition = initY + dragY;
-			// if new position do not exceeds borders of the rectangle,
-			// translate to this position
+	private void sourceDrag(Node source) {
+		source.setOnDragDetected((MouseEvent me) -> {
+			Dragboard db = source.startDragAndDrop(TransferMode.ANY);
 
-			node.setTranslateX(newXPosition);
-			node.setTranslateY(newYPosition);
-		});
-		// 鼠标弹起
-		node.setOnMouseReleased((MouseEvent me) -> {
-			node.setTranslateX(initX);
-			node.setTranslateY(initY);
-		});
-		// 鼠标Click完成
-		node.setOnMouseClicked((MouseEvent me) -> {
+			ClipboardContent content = new ClipboardContent();
+
+			if (source instanceof UldBox) {
+				content.putString(((UldBox) source).getText());
+			}
+			db.setContent(content);
+
 			me.consume();
 		});
-		// 鼠标移出
-		node.setOnMouseExited((MouseEvent me) -> {
-			node.getStyleClass().remove("-fx-loadingToDo-dropColor");
+
+		source.setOnDragDone((DragEvent de) -> {
+			if (de.getTransferMode() == TransferMode.MOVE) {
+				// source.setText("");
+			}
+			de.consume();
+		});
+	}
+
+	private void targetDrag() {
+		List<UldBox> ulds = this.loadingInfo.getLoadingUlds();
+		for (UldBox uldBox : ulds) {
+			this.targetDrag(uldBox);
+		}
+
+		List<BulkBox> bulks = this.loadingInfo.getLoadingBulks();
+		for (BulkBox bulkBox : bulks) {
+			this.targetDrag(bulkBox);
+		}
+	}
+
+	private void targetDrag(Node target) {
+		target.setOnDragOver((DragEvent de) -> {
+			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
+					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+				de.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+			}
+
+			de.consume();
+		});
+
+		target.setOnDragEntered((DragEvent de) -> {
+			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
+					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+				target.getStyleClass().add("-fx-loading-shape-drag");
+			}
+
+			de.consume();
+		});
+
+		target.setOnDragExited((DragEvent de) -> {
+			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
+					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+				target.getStyleClass().remove("-fx-loading-shape-drag");
+			}
+
+			de.consume();
+		});
+
+		target.setOnDragDropped((DragEvent de) -> {
+			Dragboard db = de.getDragboard();
+
+			boolean success = false;
+			if (db.hasString()) {
+
+				if (target instanceof UldBox) {
+					String src = ((UldBox) target).getText();
+					((UldBox) target).setText(db.getString());
+				}
+				success = true;
+			}
+
+			de.setDropCompleted(success);
+			de.consume();
 		});
 	}
 
@@ -162,7 +199,7 @@ public class DemoController extends BaseController {
 			result.add(vo);
 		}
 
-		for (int i = 1; i <= 7; i++) {
+		for (int i = 1; i <= 10; i++) {
 			BRItemVO vo = new BRItemVO();
 			vo.setUldNo("S" + (100 + i));
 			vo.setWeight(200 + i);

@@ -45,11 +45,11 @@
 
 /* 配载区 */
 .-fx-loading {
-	-fx-border-radius: 30;
+	-fx-border-radius: 10;
 	-fx-border-width: 2;
 	-fx-border-color: BLACK;
 	-fx-alignment: CENTER;
-	-fx-spacing: 30;
+	-fx-spacing: 5;
 	-fx-padding: 5 5 5 5;
 }
 .-fx-loading-border {
@@ -76,37 +76,44 @@
 	-fx-min-width: 67px;
 	-fx-min-height: 85px;
 }
+.-fx-loading-shape-drag {
+	-fx-background-color: #C8C8C8;
+}
 
 /* 待配载区 */
-.-fx-loadingToDo {
-	-fx-border-width: 2;
+.-fx-loadingToDo-uld {
+	-fx-border-width: 1;
 	-fx-border-color: BLACK;
-	-fx-padding: 0 0 0 0;
-}
-.-fx-loadingToDo-flow {
-	-fx-pref-width: 353px;
+	-fx-pref-width: 238px;
 	-fx-vgap: 2;
 	-fx-hgap: 2;
-	-fx-padding: 5 0 5 5;
+	-fx-padding: 5 5 5 5;
+}
+.-fx-loadingToDo-bulk {
+	-fx-border-width: 1;
+	-fx-border-color: BLACK;
+	-fx-pref-width: 104px;
+	-fx-vgap: 2;
+	-fx-hgap: 2;
+	-fx-padding: 5 5 5 5;
 }
 .-fx-loadingToDo-shape-uld {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
 	-fx-background-color: WHITE;
 	-fx-alignment: CENTER;
-	-fx-cursor: MOVE;
-	-fx-pref-width: 67px;
-	-fx-pref-height: 95px;
-	-fx-min-width: 67px;
-	-fx-min-height: 95px;
+	-fx-pref-width: 55px;
 }
 .-fx-loadingToDo-shape-bulk {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
 	-fx-background-color: WHITE;
 	-fx-alignment: CENTER;
-	-fx-pref-width: 67px;
-	-fx-pref-height: 95px;
+	-fx-pref-width: 45px;
 }
-.-fx-loadingToDo-dropColor {
+.-fx-loadingToDo-color-enter {
 	-fx-border-color: BLACK;
 	-fx-background-color: #F4F4F4;
+}
+.-fx-loadingToDo-color-drag {
+	-fx-border-color: BLACK;
+	-fx-background-color: #C8C8C8;
 }

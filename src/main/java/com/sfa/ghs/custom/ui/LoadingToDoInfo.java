@@ -14,9 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
-public class LoadingToDoInfo extends VBox {
+public class LoadingToDoInfo extends HBox {
 	public static final Logger log = Logger.getLogger(LoadingToDoInfo.class);
 
 	@FXML

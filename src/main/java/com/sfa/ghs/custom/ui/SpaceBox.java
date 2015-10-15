@@ -1,6 +1,8 @@
 package com.sfa.ghs.custom.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -10,6 +12,7 @@ import com.sfa.ghs.custom.data.UIEnum;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -46,10 +49,31 @@ public class SpaceBox extends VBox {
 		spaceProperty().set(value);
 	}
 
+	public UldBox getUld() {
+		for (Node node : this.uldBox.getChildren()) {
+			if (node instanceof UldBox) {
+				return (UldBox) node;
+			}
+		}
+		return null;
+	}
+
 	public void setUld() {
 		UldBox uld = new UldBox();
 		uld.getStyleClass().add("-fx-loading-shape-uld");
 		this.uldBox.getChildren().add(uld);
+	}
+
+	public List<BulkBox> getBulks() {
+		List<BulkBox> result = new ArrayList<BulkBox>();
+
+		for (Node node : this.uldBox.getChildren()) {
+			if (node instanceof BulkBox) {
+				result.add((BulkBox) node);
+			}
+		}
+
+		return result;
 	}
 
 	public void setBulk(int num) {

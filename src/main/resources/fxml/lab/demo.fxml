@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import com.sfa.ghs.custom.ui.*?>
+<?import javafx.scene.layout.StackPane?>
 
 <VBox spacing="2" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="com.sfa.ghs.controller.lab.DemoController">
@@ -19,7 +20,9 @@
 	<LoadingInfo fx:id="loadingInfo" />
 
 	<HBox>
+		<StackPane HBox.hgrow="NEVER" prefHeight="200">
 		<LoadingToDoInfo fx:id="loadingToDoInfo" />
+		</StackPane>
 	</HBox>
 
 	<stylesheets>
