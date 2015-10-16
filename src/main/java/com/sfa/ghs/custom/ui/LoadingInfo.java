@@ -52,14 +52,12 @@ public class LoadingInfo extends HBox {
 		for (SpaceItemVO vo : vos) {
 			SpaceBox space = new SpaceBox();
 			space.setSpace(vo.getSpaceName());
+			space.initBoxs(vo.getSpaceType(), vo.getLoadAmount());
 			if (vo.getSpaceType().equals("ULD")) {
-				space.setUld();
 				mainSpace.getChildren().add(space);
 			} else if (vo.getSpaceType().equals("BULK_FWD")) {
-				space.setBulk(vo.getLoadAmount());
 				fwdSpace.getChildren().add(space);
 			} else if (vo.getSpaceType().equals("BULK_AFT")) {
-				space.setBulk(vo.getLoadAmount());
 				aftSpace.getChildren().add(space);
 			} else {
 				log.info("舱位类型[" + vo.getSpaceType() + "]错误，初始化时已忽略");
@@ -67,30 +65,24 @@ public class LoadingInfo extends HBox {
 		}
 	}
 
-	public List<UldBox> getLoadingUlds() {
-		List<UldBox> result = new ArrayList<UldBox>();
-
+	public List<AbstractBox> getLoadingBoxs() {
+		List<AbstractBox> result = new ArrayList<AbstractBox>();
+		
 		for (Node node : this.mainSpace.getChildren()) {
 			if (node instanceof SpaceBox) {
-				result.add(((SpaceBox) node).getUld());
+				result.addAll(((SpaceBox) node).getBoxs());
 			}
 		}
 
-		return result;
-	}
-
-	public List<BulkBox> getLoadingBulks() {
-		List<BulkBox> result = new ArrayList<BulkBox>();
-
 		for (Node node : this.fwdSpace.getChildren()) {
 			if (node instanceof SpaceBox) {
-				result.addAll(((SpaceBox) node).getBulks());
+				result.addAll(((SpaceBox) node).getBoxs());
 			}
 		}
 
 		for (Node node : this.aftSpace.getChildren()) {
 			if (node instanceof SpaceBox) {
-				result.addAll(((SpaceBox) node).getBulks());
+				result.addAll(((SpaceBox) node).getBoxs());
 			}
 		}
 

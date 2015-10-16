@@ -38,42 +38,30 @@ public class LoadingToDoInfo extends HBox {
 
 	public void initData(List<BRItemVO> vos) {
 		for (BRItemVO vo : vos) {
+			AbstractBox box;
 			if (vo.getType().equals("ULD")) {
-				UldBox uldBox = new UldBox();
-				uldBox.setUldNo(vo.getUldNo());
-				uldBox.setWeight(String.valueOf(vo.getWeight()));
-				uldBox.setDest(vo.getDest());
-
-				uldToDo.getChildren().add(uldBox);
-
-				uldBox.getStyleClass().add("-fx-loadingToDo-shape-uld");
+				box = new UldBox();
+				uldToDo.getChildren().add(box);
+				box.getStyleClass().add("-fx-loadingToDo-shape-uld");
 			} else {
-				BulkBox bulkBox = new BulkBox();
-				bulkBox.setUldNo(vo.getUldNo());
-				bulkBox.setWeight(String.valueOf(vo.getWeight()));
-				bulkBox.setDest(vo.getDest());
-
-				bulkToDo.getChildren().add(bulkBox);
-
-				bulkBox.getStyleClass().add("-fx-loadingToDo-shape-bulk");
+				box = new BulkBox();
+				bulkToDo.getChildren().add(box);
+				box.getStyleClass().add("-fx-loadingToDo-shape-bulk");
 			}
+			box.setUldNo(vo.getUldNo());
+			box.setWeight(String.valueOf(vo.getWeight()));
+			box.setDest(vo.getDest());
 		}
 	}
 
-	public List<UldBox> getLoadingToDoUlds() {
-		List<UldBox> result = new ArrayList<UldBox>();
+	public List<AbstractBox> getLoadingToDoBoxs() {
+		List<AbstractBox> result = new ArrayList<AbstractBox>();
 
 		for (Node node : this.uldToDo.getChildren()) {
 			if (node instanceof UldBox) {
 				result.add((UldBox) node);
 			}
 		}
-
-		return result;
-	}
-
-	public List<BulkBox> getLoadingToDoBulks() {
-		List<BulkBox> result = new ArrayList<BulkBox>();
 
 		for (Node node : this.bulkToDo.getChildren()) {
 			if (node instanceof BulkBox) {

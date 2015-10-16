@@ -49,38 +49,42 @@ public class SpaceBox extends VBox {
 		spaceProperty().set(value);
 	}
 
-	public UldBox getUld() {
-		for (Node node : this.uldBox.getChildren()) {
-			if (node instanceof UldBox) {
-				return (UldBox) node;
-			}
-		}
-		return null;
-	}
-
-	public void setUld() {
-		UldBox uld = new UldBox();
-		uld.getStyleClass().add("-fx-loading-shape-uld");
-		this.uldBox.getChildren().add(uld);
-	}
-
-	public List<BulkBox> getBulks() {
-		List<BulkBox> result = new ArrayList<BulkBox>();
+	public List<AbstractBox> getBoxs() {
+		List<AbstractBox> result = new ArrayList<AbstractBox>();
 
 		for (Node node : this.uldBox.getChildren()) {
-			if (node instanceof BulkBox) {
-				result.add((BulkBox) node);
+			if (node instanceof AbstractBox) {
+				result.add((AbstractBox) node);
 			}
 		}
 
 		return result;
 	}
 
-	public void setBulk(int num) {
+	public void initBoxs(String spaceType, int num) {
 		for (int i = 1; i <= num; i++) {
-			BulkBox bulk = new BulkBox();
-			bulk.getStyleClass().add("-fx-loading-shape-bulk");
-			this.uldBox.getChildren().add(bulk);
+			AbstractBox box;
+			if (!spaceType.equals("ULD")) {
+				box = new BulkBox();
+				box.getStyleClass().add("-fx-loading-shape-bulk");
+			} else {
+				box = new UldBox();
+				box.getStyleClass().add("-fx-loading-shape-uld");
+			}
+			this.uldBox.getChildren().add(box);
+		}
+	}
+
+	public void clearValue(String uldNo) {
+		for (Node node : this.uldBox.getChildren()) {
+			if (node instanceof UldBox) {
+				((UldBox) node).clearText();
+				break;
+			} else if (node instanceof BulkBox) {
+				if (uldNo.equals(((BulkBox) node).getUldNo())) {
+					((BulkBox) node).clearText();
+				}
+			}
 		}
 	}
 }

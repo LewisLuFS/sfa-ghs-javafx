@@ -9,10 +9,12 @@ import java.util.ResourceBundle;
 import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
+import com.sfa.ghs.custom.ui.AbstractBox;
 import com.sfa.ghs.custom.ui.BulkBox;
 import com.sfa.ghs.custom.ui.FlightInfo;
 import com.sfa.ghs.custom.ui.LoadingInfo;
 import com.sfa.ghs.custom.ui.LoadingToDoInfo;
+import com.sfa.ghs.custom.ui.SpaceBox;
 import com.sfa.ghs.custom.ui.UldBox;
 import com.sfa.ghs.custom.vo.BRItemVO;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
@@ -20,11 +22,14 @@ import com.sfa.ghs.custom.vo.SpaceItemVO;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 
 @Component
 public class DemoController extends BaseController {
@@ -39,25 +44,44 @@ public class DemoController extends BaseController {
 	public void initialize(URL location, ResourceBundle resources) {
 		this.flightInfo.initData(this.getFlightVO());
 		this.loadingInfo.initBaseInfo(this.getSpaceItemVOs());
-		this.targetDrag();
-
 		this.loadingToDoInfo.initData(this.getBRItemVOs());
-		this.sourceDrag();
+
+		this.setloadingToDoDragEvent();
+		this.setLoadingDragEvent();
 	}
 
-	private void sourceDrag() {
-		List<UldBox> uldToDos = this.loadingToDoInfo.getLoadingToDoUlds();
-		for (UldBox uldToDo : uldToDos) {
-			this.sourceDrag(uldToDo);
-		}
-
-		List<BulkBox> bulkToDos = this.loadingToDoInfo.getLoadingToDoBulks();
-		for (BulkBox bulkBox : bulkToDos) {
-			this.sourceDrag(bulkBox);
+	/**
+	 * 设置待配载区事件
+	 */
+	private void setloadingToDoDragEvent() {
+		List<AbstractBox> loadingToDoBoxs = this.loadingToDoInfo.getLoadingToDoBoxs();
+		for (AbstractBox box : loadingToDoBoxs) {
+			this.setDragSourceEvent(box);
 		}
 	}
 
-	private void sourceDrag(Node source) {
+	/**
+	 * 设置配载区事件
+	 */
+	private void setLoadingDragEvent() {
+		List<AbstractBox> loadingBoxs = this.loadingInfo.getLoadingBoxs();
+		for (AbstractBox box : loadingBoxs) {
+			this.setDragSourceEvent(box);
+		}
+	}
+
+	/**
+	 * 设置拖拽源（ULD或者BULK）的拖拽事件
+	 * <ul>
+	 * <li>拖拽源可由待配载区拖拽至配载区舱位，也可以在配载区各舱位之间任意拖拽</li>
+	 * <li>拖拽源ULD只能拖拽至配载区主舱舱位， 拖拽源BULK只能拖拽至配载区腹舱（前腹舱和后腹舱）舱位</li>
+	 * <li>如果拖拽成功，则拖拽源需要被清除</li>
+	 * </ul>
+	 * 
+	 * @param source
+	 *            拖拉拽源
+	 */
+	private void setDragSourceEvent(Node source) {
 		source.setOnDragDetected((MouseEvent me) -> {
 			Dragboard db = source.startDragAndDrop(TransferMode.ANY);
 
@@ -65,6 +89,8 @@ public class DemoController extends BaseController {
 
 			if (source instanceof UldBox) {
 				content.putString(((UldBox) source).getText());
+			} else if (source instanceof BulkBox) {
+				content.putString(((BulkBox) source).getText());
 			}
 			db.setContent(content);
 
@@ -73,22 +99,21 @@ public class DemoController extends BaseController {
 
 		source.setOnDragDone((DragEvent de) -> {
 			if (de.getTransferMode() == TransferMode.MOVE) {
-				// source.setText("");
+				Parent parent = source.getParent();
+
+				if (parent instanceof FlowPane) {
+					// 来自待配载区
+					((FlowPane) parent).getChildren().remove(source);
+				} else if (parent instanceof HBox) {
+					// 来自配载区舱位
+					Parent root =  parent.getParent();
+					if (root instanceof SpaceBox) {
+						((SpaceBox) root).clearUldOrBulk(());
+					}
+				}
 			}
 			de.consume();
 		});
-	}
-
-	private void targetDrag() {
-		List<UldBox> ulds = this.loadingInfo.getLoadingUlds();
-		for (UldBox uldBox : ulds) {
-			this.targetDrag(uldBox);
-		}
-
-		List<BulkBox> bulks = this.loadingInfo.getLoadingBulks();
-		for (BulkBox bulkBox : bulks) {
-			this.targetDrag(bulkBox);
-		}
 	}
 
 	private void targetDrag(Node target) {
@@ -137,6 +162,11 @@ public class DemoController extends BaseController {
 		});
 	}
 
+	/**
+	 * 模拟从后台获取航班计划基础信息
+	 * 
+	 * @return
+	 */
 	private FlightInfoVO getFlightVO() {
 		FlightInfoVO vo = new FlightInfoVO();
 
@@ -156,6 +186,11 @@ public class DemoController extends BaseController {
 		return vo;
 	}
 
+	/**
+	 * 模拟从后台获取飞机舱位集合
+	 * 
+	 * @return
+	 */
 	private List<SpaceItemVO> getSpaceItemVOs() {
 		List<SpaceItemVO> result = new ArrayList<SpaceItemVO>();
 
@@ -187,6 +222,11 @@ public class DemoController extends BaseController {
 		return result;
 	}
 
+	/**
+	 * 模拟从后台获取拼装单集合
+	 * 
+	 * @return
+	 */
 	private List<BRItemVO> getBRItemVOs() {
 		List<BRItemVO> result = new ArrayList<BRItemVO>();
 
