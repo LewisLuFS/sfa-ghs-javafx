@@ -19,6 +19,7 @@
 		<spring.version>4.2.1.RELEASE</spring.version>
 
 		<commons-lang.version>2.6</commons-lang.version>
+		<jackson.version>1.9.13</jackson.version>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.12</junit.version>
 	</properties>
@@ -29,6 +30,13 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>${commons-lang.version}</version>
+		</dependency>
+
+		<!-- Jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- Spring -->

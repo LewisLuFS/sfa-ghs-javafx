@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.sfa.common.exception.SfaException;
 import com.sfa.ghs.custom.data.UIEnum;
+import com.sfa.ghs.custom.vo.SpaceItemVO;
 
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class SpaceBox extends VBox {
 	@FXML
 	private HBox uldBox;
 
+	private SpaceItemVO vo;
+
 	public SpaceBox() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(UIEnum.WB_SPACE_BOX.getFile()));
@@ -37,54 +40,37 @@ public class SpaceBox extends VBox {
 		}
 	}
 
-	public StringProperty spaceProperty() {
+	private StringProperty spaceProperty() {
 		return space.textProperty();
 	}
 
-	public String getSpace() {
-		return spaceProperty().get();
-	}
-
-	public void setSpace(String value) {
+	private void setSpace(String value) {
 		spaceProperty().set(value);
 	}
 
-	public List<AbstractBox> getBoxs() {
-		List<AbstractBox> result = new ArrayList<AbstractBox>();
+	public void initBaseInfo(SpaceItemVO vo) {
+		if (null == vo) {
+			throw new NullPointerException();
+		}
+
+		this.vo = vo;
+		this.setSpace(vo.getSpaceName());
+		this.uldBox.getChildren().addAll(BoxHelper.newEmptyBoxes(vo.getLoadAmount()));
+	}
+
+	public SpaceItemVO getValue() {
+		return this.vo;
+	}
+
+	public List<UldBox> getBoxs() {
+		List<UldBox> result = new ArrayList<UldBox>();
 
 		for (Node node : this.uldBox.getChildren()) {
-			if (node instanceof AbstractBox) {
-				result.add((AbstractBox) node);
+			if (node instanceof UldBox) {
+				result.add((UldBox) node);
 			}
 		}
 
 		return result;
-	}
-
-	public void initBoxs(String spaceType, int num) {
-		for (int i = 1; i <= num; i++) {
-			AbstractBox box;
-			if (!spaceType.equals("ULD")) {
-				box = new BulkBox();
-				box.getStyleClass().add("-fx-loading-shape-bulk");
-			} else {
-				box = new UldBox();
-				box.getStyleClass().add("-fx-loading-shape-uld");
-			}
-			this.uldBox.getChildren().add(box);
-		}
-	}
-
-	public void clearValue(String uldNo) {
-		for (Node node : this.uldBox.getChildren()) {
-			if (node instanceof UldBox) {
-				((UldBox) node).clearText();
-				break;
-			} else if (node instanceof BulkBox) {
-				if (uldNo.equals(((BulkBox) node).getUldNo())) {
-					((BulkBox) node).clearText();
-				}
-			}
-		}
 	}
 }

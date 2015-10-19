@@ -60,21 +60,13 @@
 .-fx-loading-separator {
 	-fx-background-color: #C8C8C8;
 }
-.-fx-loading-shape-uld {
+.-fx-loading-shape {
 	-fx-background-color: WHITE;
 	-fx-alignment: CENTER;
 	-fx-pref-width: 67px;
 	-fx-pref-height: 95px;
 	-fx-min-width: 67px;
 	-fx-min-height: 95px;
-}
-.-fx-loading-shape-bulk {
-	-fx-background-color: WHITE;
-	-fx-alignment: CENTER;
-	-fx-pref-width: 67px;
-	-fx-pref-height: 85px;
-	-fx-min-width: 67px;
-	-fx-min-height: 85px;
 }
 .-fx-loading-shape-drag {
 	-fx-background-color: #C8C8C8;
@@ -92,28 +84,14 @@
 .-fx-loadingToDo-bulk {
 	-fx-border-width: 1;
 	-fx-border-color: BLACK;
-	-fx-pref-width: 104px;
+	-fx-pref-width: 124px;
 	-fx-vgap: 2;
 	-fx-hgap: 2;
 	-fx-padding: 5 5 5 5;
 }
-.-fx-loadingToDo-shape-uld {
+.-fx-loadingToDo-shape {
 	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
 	-fx-background-color: WHITE;
 	-fx-alignment: CENTER;
 	-fx-pref-width: 55px;
-}
-.-fx-loadingToDo-shape-bulk {
-	-fx-border-color: #C8C8C8 #C8C8C8 #C8C8C8 #C8C8C8;
-	-fx-background-color: WHITE;
-	-fx-alignment: CENTER;
-	-fx-pref-width: 45px;
-}
-.-fx-loadingToDo-color-enter {
-	-fx-border-color: BLACK;
-	-fx-background-color: #F4F4F4;
-}
-.-fx-loadingToDo-color-drag {
-	-fx-border-color: BLACK;
-	-fx-background-color: #C8C8C8;
 }

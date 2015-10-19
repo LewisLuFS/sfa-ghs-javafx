@@ -6,11 +6,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
-import com.sfa.ghs.custom.ui.AbstractBox;
-import com.sfa.ghs.custom.ui.BulkBox;
+import com.sfa.common.util.JsonUtil;
+import com.sfa.ghs.custom.ui.BoxHelper;
 import com.sfa.ghs.custom.ui.FlightInfo;
 import com.sfa.ghs.custom.ui.LoadingInfo;
 import com.sfa.ghs.custom.ui.LoadingToDoInfo;
@@ -33,6 +34,8 @@ import javafx.scene.layout.HBox;
 
 @Component
 public class DemoController extends BaseController {
+	public static final Logger log = Logger.getLogger(DemoController.class);
+
 	@FXML
 	private FlightInfo flightInfo;
 	@FXML
@@ -54,8 +57,8 @@ public class DemoController extends BaseController {
 	 * 设置待配载区事件
 	 */
 	private void setloadingToDoDragEvent() {
-		List<AbstractBox> loadingToDoBoxs = this.loadingToDoInfo.getLoadingToDoBoxs();
-		for (AbstractBox box : loadingToDoBoxs) {
+		List<UldBox> loadingToDoBoxs = this.loadingToDoInfo.getLoadingToDoBoxs();
+		for (UldBox box : loadingToDoBoxs) {
 			this.setDragSourceEvent(box);
 		}
 	}
@@ -64,14 +67,15 @@ public class DemoController extends BaseController {
 	 * 设置配载区事件
 	 */
 	private void setLoadingDragEvent() {
-		List<AbstractBox> loadingBoxs = this.loadingInfo.getLoadingBoxs();
-		for (AbstractBox box : loadingBoxs) {
+		List<UldBox> loadingBoxs = this.loadingInfo.getLoadingBoxs();
+		for (UldBox box : loadingBoxs) {
 			this.setDragSourceEvent(box);
+			this.setDragTargetEvent(box);
 		}
 	}
 
 	/**
-	 * 设置拖拽源（ULD或者BULK）的拖拽事件
+	 * 设置拖拽源的拖拽事件
 	 * <ul>
 	 * <li>拖拽源可由待配载区拖拽至配载区舱位，也可以在配载区各舱位之间任意拖拽</li>
 	 * <li>拖拽源ULD只能拖拽至配载区主舱舱位， 拖拽源BULK只能拖拽至配载区腹舱（前腹舱和后腹舱）舱位</li>
@@ -79,7 +83,7 @@ public class DemoController extends BaseController {
 	 * </ul>
 	 * 
 	 * @param source
-	 *            拖拉拽源
+	 *            拖拽源
 	 */
 	private void setDragSourceEvent(Node source) {
 		source.setOnDragDetected((MouseEvent me) -> {
@@ -88,9 +92,7 @@ public class DemoController extends BaseController {
 			ClipboardContent content = new ClipboardContent();
 
 			if (source instanceof UldBox) {
-				content.putString(((UldBox) source).getText());
-			} else if (source instanceof BulkBox) {
-				content.putString(((BulkBox) source).getText());
+				content.putString(JsonUtil.toJson(((UldBox) source).getValue()));
 			}
 			db.setContent(content);
 
@@ -106,20 +108,44 @@ public class DemoController extends BaseController {
 					((FlowPane) parent).getChildren().remove(source);
 				} else if (parent instanceof HBox) {
 					// 来自配载区舱位
-					Parent root =  parent.getParent();
-					if (root instanceof SpaceBox) {
-						((SpaceBox) root).clearUldOrBulk(());
-					}
+					BoxHelper.clearValue((UldBox) source);
 				}
 			}
 			de.consume();
 		});
 	}
 
-	private void targetDrag(Node target) {
+	private boolean isSameBox(Object src, Node target) {
+		UldBox source = (UldBox) src;
+		String sourceType = source.getValue().getType();
+
+		SpaceBox root = (SpaceBox) target.getParent().getParent();
+		String targetType = root.getValue().getSpaceType();
+
+		if (target.equals(src)) {
+			return false;
+		}
+
+		if (sourceType.equals("ULD") && targetType.equals("ULD")) {
+			return true;
+		}
+
+		if (!sourceType.equals("ULD") && !targetType.equals("ULD")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * 设置拖拽目标的拖拽事件，如果拖拽目标上有ULD或者BULK，则将该ULD或者BULK移动到待配载区。
+	 * 
+	 * @param target
+	 *            拖拽目标
+	 */
+	private void setDragTargetEvent(Node target) {
 		target.setOnDragOver((DragEvent de) -> {
-			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
-					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+			if (this.isSameBox(de.getGestureSource(), target)) {
 				de.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 			}
 
@@ -127,8 +153,7 @@ public class DemoController extends BaseController {
 		});
 
 		target.setOnDragEntered((DragEvent de) -> {
-			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
-					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+			if (this.isSameBox(de.getGestureSource(), target)) {
 				target.getStyleClass().add("-fx-loading-shape-drag");
 			}
 
@@ -136,8 +161,7 @@ public class DemoController extends BaseController {
 		});
 
 		target.setOnDragExited((DragEvent de) -> {
-			if ((de.getGestureSource() instanceof UldBox && target instanceof UldBox)
-					|| (de.getGestureSource() instanceof BulkBox && target instanceof BulkBox)) {
+			if (this.isSameBox(de.getGestureSource(), target)) {
 				target.getStyleClass().remove("-fx-loading-shape-drag");
 			}
 
@@ -149,10 +173,15 @@ public class DemoController extends BaseController {
 
 			boolean success = false;
 			if (db.hasString()) {
-
 				if (target instanceof UldBox) {
-					String src = ((UldBox) target).getText();
-					((UldBox) target).setText(db.getString());
+					BRItemVO tempVO = ((UldBox) target).getValue();
+					if (null != tempVO) {
+						// 来自配载区舱位
+						UldBox box = this.loadingToDoInfo.addBox(tempVO);
+						this.setDragSourceEvent(box);
+					}
+
+					BoxHelper.initValue((UldBox) target, JsonUtil.fromJson(db.getString(), BRItemVO.class));
 				}
 				success = true;
 			}
@@ -235,7 +264,11 @@ public class DemoController extends BaseController {
 			vo.setUldNo("PAG" + (12300 + i) + "O3");
 			vo.setWeight(2000 + i);
 			vo.setDest("HGH");
-			vo.setType("ULD");
+			if (i == 4) {
+				vo.setType("BULK");
+			} else {
+				vo.setType("ULD");
+			}
 			result.add(vo);
 		}
 

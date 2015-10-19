@@ -1,18 +1,21 @@
 package com.sfa.ghs.custom.ui;
 
+import com.sfa.ghs.custom.vo.BRItemVO;
+
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public abstract class AbstractBox extends VBox {
-
 	@FXML
 	protected Label uldNo;
 	@FXML
 	protected Label weight;
 	@FXML
 	protected Label dest;
+
+	protected BRItemVO vo;
 
 	protected StringProperty uldNoProperty() {
 		return uldNo.textProperty();
@@ -26,49 +29,33 @@ public abstract class AbstractBox extends VBox {
 		return dest.textProperty();
 	}
 
-	public abstract String getUldNo();
+	protected abstract void setUldNo(String value);
 
-	public abstract void setUldNo(String value);
-
-	public String getWeight() {
-		return weightProperty().get();
-	}
-
-	public void setWeight(String value) {
+	protected void setWeight(String value) {
 		weightProperty().set(value);
 	}
 
-	public String getDest() {
-		return destProperty().get();
-	}
-
-	public void setDest(String value) {
+	protected void setDest(String value) {
 		destProperty().set(value);
 	}
 
-	public String getValue() {
-		if ("".equals(this.getUldNo())) {
-			return "";
-		}
-		return "uldNo:" + this.getUldNo() + ",weight:" + this.getWeight() + ",dest:" + this.getDest();
+	public BRItemVO getValue() {
+		return vo;
 	}
 
-	public void setValue(String value) {
-		for (String obj : value.split(",")) {
-			String key = obj.split(":")[0];
-			String v = obj.split(":")[1];
-
-			if (key.equals("uldNo")) {
-				this.setUldNo(v);
-			} else if (key.equals("weight")) {
-				this.setWeight(v);
-			} else if (key.equals("dest")) {
-				this.setDest(v);
-			}
+	public void setValue(BRItemVO vo) {
+		if (null == vo) {
+			this.clearValue();
+		} else {
+			this.vo = vo;
+			this.setUldNo(vo.getUldNo());
+			this.setWeight(String.valueOf(vo.getWeight()));
+			this.setDest(vo.getDest());
 		}
 	}
 
-	public void clearValue(String uldNo) {
+	public void clearValue() {
+		this.vo = null;
 		this.setUldNo("");
 		this.setWeight("");
 		this.setDest("");

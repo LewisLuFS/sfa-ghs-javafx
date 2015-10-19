@@ -51,8 +51,7 @@ public class LoadingInfo extends HBox {
 	public void initBaseInfo(List<SpaceItemVO> vos) {
 		for (SpaceItemVO vo : vos) {
 			SpaceBox space = new SpaceBox();
-			space.setSpace(vo.getSpaceName());
-			space.initBoxs(vo.getSpaceType(), vo.getLoadAmount());
+			space.initBaseInfo(vo);
 			if (vo.getSpaceType().equals("ULD")) {
 				mainSpace.getChildren().add(space);
 			} else if (vo.getSpaceType().equals("BULK_FWD")) {
@@ -65,9 +64,9 @@ public class LoadingInfo extends HBox {
 		}
 	}
 
-	public List<AbstractBox> getLoadingBoxs() {
-		List<AbstractBox> result = new ArrayList<AbstractBox>();
-		
+	public List<UldBox> getLoadingBoxs() {
+		List<UldBox> result = new ArrayList<UldBox>();
+
 		for (Node node : this.mainSpace.getChildren()) {
 			if (node instanceof SpaceBox) {
 				result.addAll(((SpaceBox) node).getBoxs());
