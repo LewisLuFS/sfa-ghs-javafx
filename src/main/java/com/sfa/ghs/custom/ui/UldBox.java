@@ -7,6 +7,10 @@ import javafx.scene.layout.VBox;
 public class UldBox extends VBox {
 	private BRItemVO vo;
 
+	public UldBox() {
+
+	}
+
 	public BRItemVO getValue() {
 		return this.vo;
 	}
@@ -17,9 +21,5 @@ public class UldBox extends VBox {
 
 	public void clearValue() {
 		this.vo = null;
-	}
-
-	public UldBox() {
-
 	}
 }
