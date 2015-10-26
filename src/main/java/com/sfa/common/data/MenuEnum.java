@@ -16,6 +16,7 @@ public enum MenuEnum {
 
 	// 实验室
 	LAB_DEMO("实验室", MenuTypeEnum.PAGE, "demo", "配载DEMO", null, "/fxml/lab/demo.fxml"),
+	LAB_DEMO2("实验室", MenuTypeEnum.PAGE, "demo2", "配载DEMO2", null, "/fxml/lab/demo.fxml"),
 
 	// 帮助
 	HELP_ABOUT("帮助", MenuTypeEnum.ALERT, "about", "关于", null, "/fxml/help/about.fxml");

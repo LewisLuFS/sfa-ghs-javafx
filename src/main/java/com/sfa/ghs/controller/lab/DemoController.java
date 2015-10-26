@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
@@ -33,6 +34,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 
 @Component
+@Scope("prototype")
 public class DemoController extends BaseController {
 	public static final Logger log = Logger.getLogger(DemoController.class);
 
@@ -179,9 +181,10 @@ public class DemoController extends BaseController {
 						// 来自配载区舱位
 						UldBox box = this.loadingToDoInfo.addBox(tempVO);
 						this.setDragSourceEvent(box);
+					} else {
+						// 来自待配载区
+						BoxHelper.initValue((UldBox) target, JsonUtil.fromJson(db.getString(), BRItemVO.class));
 					}
-
-					BoxHelper.initValue((UldBox) target, JsonUtil.fromJson(db.getString(), BRItemVO.class));
 				}
 				success = true;
 			}
