@@ -13,12 +13,14 @@ import org.springframework.stereotype.Component;
 import com.sfa.common.controller.BaseController;
 import com.sfa.common.util.JsonUtil;
 import com.sfa.ghs.custom.ui.BoxHelper;
+import com.sfa.ghs.custom.ui.DashboardInfo;
 import com.sfa.ghs.custom.ui.FlightInfo;
 import com.sfa.ghs.custom.ui.LoadingInfo;
 import com.sfa.ghs.custom.ui.LoadingToDoInfo;
 import com.sfa.ghs.custom.ui.SpaceBox;
 import com.sfa.ghs.custom.ui.UldBox;
 import com.sfa.ghs.custom.vo.BRItemVO;
+import com.sfa.ghs.custom.vo.DashboardInfoVO;
 import com.sfa.ghs.custom.vo.FlightInfoVO;
 import com.sfa.ghs.custom.vo.SpaceItemVO;
 
@@ -44,12 +46,15 @@ public class DemoController extends BaseController {
 	private LoadingInfo loadingInfo;
 	@FXML
 	private LoadingToDoInfo loadingToDoInfo;
+	@FXML
+	private DashboardInfo dashboardInfo;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.flightInfo.initData(this.getFlightVO());
 		this.loadingInfo.initBaseInfo(this.getSpaceItemVOs());
 		this.loadingToDoInfo.initData(this.getBRItemVOs());
+		this.dashboardInfo.initData(this.getDashboardVO());
 
 		this.setloadingToDoDragEvent();
 		this.setLoadingDragEvent();
@@ -285,5 +290,36 @@ public class DemoController extends BaseController {
 		}
 
 		return result;
+	}
+
+	private DashboardInfoVO getDashboardVO() {
+		DashboardInfoVO vo = new DashboardInfoVO();
+		vo.setZfwWeight(1234);
+		vo.setZfwIndex(12.34);
+		vo.setZfwCg(1.234);
+
+		vo.setTowWeight(1212);
+		vo.setTowIndex(12.12);
+		vo.setTowCg(1.212);
+
+		vo.setLdwWeight(1111);
+		vo.setLdwIndex(11.11);
+		vo.setLdwCg(1.111);
+
+		vo.setH5(3.3);
+		vo.setH15(3.4);
+		
+
+		vo.setWeightSurplus(999999);
+		vo.setWeightTotal(1234);
+		vo.setWeightMain(1234);
+		vo.setWeightBelly(1234);
+		vo.setWeightOn(1234);
+		vo.setWeightOff(1234);
+		vo.setNumUldTotal(12);
+		vo.setNumBulkTotal(11);
+		vo.setNumUldOn(0);
+		vo.setNumBulkOn(0);
+		return vo;
 	}
 }

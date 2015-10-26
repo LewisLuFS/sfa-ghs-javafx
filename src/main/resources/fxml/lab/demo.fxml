@@ -20,9 +20,8 @@
 	<LoadingInfo fx:id="loadingInfo" />
 
 	<HBox>
-		<StackPane HBox.hgrow="NEVER" prefHeight="200">
 		<LoadingToDoInfo fx:id="loadingToDoInfo" />
-		</StackPane>
+		<DashboardInfo fx:id="dashboardInfo" />
 	</HBox>
 
 	<stylesheets>

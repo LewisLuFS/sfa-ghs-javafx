@@ -1,0 +1,115 @@
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="VBox" spacing="10" xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets left="10" right="5" top="1" bottom="10" />
+	</padding>
+
+	<GridPane vgap="0" hgap="0" gridLinesVisible="true">
+		<!-- First Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="labelTitle" text="" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="labelTitle" text="WEIGHT" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="labelTitle" text="INDEX" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="labelTitle" text="CG" />
+
+		<!-- Second Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="labelTitle" text="ZFW" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="labelContent" fx:id="zfwWeight" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="labelContent" fx:id="zfwIndex" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="labelContent" fx:id="zfwCg" />
+
+		<!-- Third Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="labelTitle" text="TOW" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="labelContent" fx:id="towWeight" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="2" styleClass="labelContent" fx:id="towIndex" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="2" styleClass="labelContent" fx:id="towCg" />
+
+		<!-- Fouth Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="labelTitle" text="LDW" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="labelContent" fx:id="ldwWeight" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="3" styleClass="labelContent" fx:id="ldwIndex" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="3" styleClass="labelContent" fx:id="ldwCg" />
+
+		<columnConstraints>
+			<ColumnConstraints prefWidth="70" minWidth="70" halignment="CENTER" />
+			<ColumnConstraints prefWidth="70" minWidth="70" halignment="CENTER" />
+			<ColumnConstraints prefWidth="70" minWidth="70" halignment="CENTER" />
+			<ColumnConstraints prefWidth="70" minWidth="70" halignment="CENTER" />
+		</columnConstraints>
+		<rowConstraints>
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+		</rowConstraints>
+	</GridPane>
+
+	<GridPane vgap="0" hgap="0" gridLinesVisible="false">
+		<!-- First Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="labelTitle" text="水平安定面5度" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="labelContent" fx:id="h5" />
+
+		<!-- Second Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="labelTitle" text="水平安定面15度" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="labelContent" fx:id="h15" />
+
+		<columnConstraints>
+			<ColumnConstraints prefWidth="140" minWidth="140" />
+			<ColumnConstraints prefWidth="140" minWidth="140" />
+		</columnConstraints>
+		<rowConstraints>
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+		</rowConstraints>
+	</GridPane>
+
+	<GridPane vgap="0" hgap="0" gridLinesVisible="false">
+		<!-- First Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="labelTitle" text="剩余业载" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="labelContent" fx:id="weightSurplus" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="labelTitle" text="截载总重" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="labelContent" fx:id="weightTotal" />
+
+		<!-- Second Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="labelTitle" text="主舱总重" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="labelContent" fx:id="weightMain" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="labelTitle" text="腹舱总重" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="labelContent" fx:id="weightBelly" />
+
+		<!-- Third Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="labelTitle" text="已配货重" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="labelContent" fx:id="weightOn" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="2" styleClass="labelTitle" text="未配货重" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="2" styleClass="labelContent" fx:id="weightOff" />
+
+		<!-- Forth Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="labelTitle" text="板箱数" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="labelContent" fx:id="numUldTotal" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="3" styleClass="labelTitle" text="散车数" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="3" styleClass="labelContent" fx:id="numBulkTotal" />
+
+		<!-- Firth Row -->
+		<Label GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="labelTitle" text="已配板箱" />
+		<Label GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="labelContent" fx:id="numUldOn" />
+		<Label GridPane.columnIndex="2" GridPane.rowIndex="4" styleClass="labelTitle" text="已配散车" />
+		<Label GridPane.columnIndex="3" GridPane.rowIndex="4" styleClass="labelContent" fx:id="numBulkOn" />
+
+		<columnConstraints>
+			<ColumnConstraints prefWidth="70" minWidth="70" />
+			<ColumnConstraints prefWidth="70" minWidth="70" />
+			<ColumnConstraints prefWidth="70" minWidth="70" />
+			<ColumnConstraints prefWidth="70" minWidth="70" />
+		</columnConstraints>
+		<rowConstraints>
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+			<RowConstraints prefHeight="26" minHeight="26" valignment="CENTER" />
+		</rowConstraints>
+	</GridPane>
+
+</fx:root>
