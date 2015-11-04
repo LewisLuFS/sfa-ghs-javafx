@@ -2,27 +2,24 @@ package com.sfa.common.data;
 
 public enum MenuEnum {
 	// 文件
-	FILE_LOGOUT("文件", MenuTypeEnum.COMMAND, "logout", "重新登录", null, "logout", "Ctrl+L"),
+	FILE_LOGOUT("文件", Type.COMMAND, "logout", "重新登录", null, "logout", "Alt+L"),
 	SEPARATOR_01("文件", "separator_01"),
-	FILE_EXIT("文件", MenuTypeEnum.COMMAND, "exit", "退出", null, "exit", "Alt+X"),
+	FILE_EXIT("文件", Type.COMMAND, "exit", "退出", null, "exit", "Alt+X"),
 
-	// 配载
-	WB_FLIGHT("配载", MenuTypeEnum.PAGE, "flight", "航班列表", null, "/fxml/wb/flight.fxml"),
-	SEPARATOR_02("配载", "separator_02"),
-	WB_PRE("配载", MenuTypeEnum.PAGE, "", "转板预配", null, ""),
-	WB_PRE2("配载", MenuTypeEnum.PAGE, "", "转板预配还原", null, ""),
-	SEPARATOR_03("配载", "separator_03"),
-	WB_CARGE("配载", MenuTypeEnum.PAGE, "", "货邮舱单", null, ""),
+	// 配载操作
+	WB_FLIGHT("配载操作", Type.PAGE, "flight", "航班列表", null, "/fxml/wb/flight.fxml"),
+	SEPARATOR_02("配载操作", "separator_02"),
+	WB_PRE("配载操作", Type.PAGE, "", "转板预配", null, ""),
+	WB_PRE2("配载操作", Type.PAGE, "", "转板预配还原", null, ""),
 
 	// 实验室
-	LAB_DEMO("实验室", MenuTypeEnum.PAGE, "demo", "配载DEMO", null, "/fxml/lab/demo.fxml"),
-	LAB_DEMO2("实验室", MenuTypeEnum.PAGE, "demo2", "配载DEMO2", null, "/fxml/lab/demo.fxml"),
+	LAB_DEMO("实验室", Type.PAGE, "demo", "配载DEMO", null, "/fxml/lab/demo.fxml"),
 
 	// 帮助
-	HELP_ABOUT("帮助", MenuTypeEnum.ALERT, "about", "关于", null, "/fxml/help/about.fxml");
+	HELP_ABOUT("帮助", Type.ALERT, "about", "关于", null, "/fxml/help/about.fxml", "Alt+A");
 
 	private String parentName;
-	private MenuTypeEnum menuType;
+	private Type type;
 	private String code;
 	private String name;
 	private String icon;
@@ -36,37 +33,38 @@ public enum MenuEnum {
 	 * @param code
 	 */
 	private MenuEnum(String parentName, String code) {
-		this(parentName, MenuTypeEnum.SEPARATOR, null, null, null, null, null);
+		this(parentName, Type.SEPARATOR, null, null, null, null, null);
 	}
 
 	/**
 	 * 无快捷键菜单
 	 * 
 	 * @param parentName
+	 * @param type
 	 * @param code
 	 * @param name
 	 * @param menuType
 	 * @param content
 	 */
-	private MenuEnum(String parentName, MenuTypeEnum menuType, String code, String name, String icon, String content) {
-		this(parentName, menuType, code, name, icon, content, null);
+	private MenuEnum(String parentName, Type type, String code, String name, String icon, String content) {
+		this(parentName, type, code, name, icon, content, null);
 	}
 
 	/**
 	 * 普通菜单
 	 * 
 	 * @param parentName
-	 * @param menuType
+	 * @param type
 	 * @param code
 	 * @param name
 	 * @param icon
 	 * @param content
 	 * @param accelerator
 	 */
-	private MenuEnum(String parentName, MenuTypeEnum menuType, String code, String name, String icon, String content,
+	private MenuEnum(String parentName, Type type, String code, String name, String icon, String content,
 			String accelerator) {
 		this.parentName = parentName;
-		this.menuType = menuType;
+		this.type = type;
 		this.code = code;
 		this.name = name;
 		this.icon = icon;
@@ -78,8 +76,8 @@ public enum MenuEnum {
 		return parentName;
 	}
 
-	public MenuTypeEnum getMenuType() {
-		return menuType;
+	public Type getType() {
+		return type;
 	}
 
 	public String getCode() {
@@ -100,5 +98,29 @@ public enum MenuEnum {
 
 	public String getAccelerator() {
 		return accelerator;
+	}
+
+	public enum Type {
+		COMMAND("command", "命令"), SEPARATOR("separator", "分割线"), ALERT("alert", "弹出框"), PAGE("page", "页面");
+
+		private String code;
+		private String name;
+
+		private Type(String code, String name) {
+			this.code = code;
+			this.name = name;
+		}
+
+		public String getCode() {
+			return code;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String toString() {
+			return "[name:" + name + ", code:" + code + "]";
+		}
 	}
 }

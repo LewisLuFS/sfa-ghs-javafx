@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.sfa.common.controller.BaseController;
 import com.sfa.common.data.MenuEnum;
-import com.sfa.common.data.MenuTypeEnum;
 import com.sfa.common.manager.LocalManager;
 import com.sfa.common.util.StringUtil;
 
@@ -58,7 +57,7 @@ public class MainController extends BaseController {
 	}
 
 	private void addMenuItem(Menu menu, MenuEnum m) {
-		if (m.getMenuType().equals(MenuTypeEnum.SEPARATOR)) {
+		if (m.getType().equals(MenuEnum.Type.SEPARATOR)) {
 			SeparatorMenuItem menuItem = new SeparatorMenuItem();
 			menu.getItems().add(menuItem);
 		} else {
@@ -67,11 +66,11 @@ public class MainController extends BaseController {
 				menuItem.setAccelerator(KeyCombination.keyCombination(m.getAccelerator()));
 			}
 			menuItem.setOnAction(event -> {
-				if (m.getMenuType().equals(MenuTypeEnum.ALERT)) {
+				if (m.getType().equals(MenuEnum.Type.ALERT)) {
 					System.out.println(m.getName() + ", alert");
-				} else if (m.getMenuType().equals(MenuTypeEnum.PAGE)) {
+				} else if (m.getType().equals(MenuEnum.Type.PAGE)) {
 					LocalManager.getApp().addTab(tabPane, m.getContent(), m.getName());
-				} else if (m.getMenuType().equals(MenuTypeEnum.COMMAND)) {
+				} else if (m.getType().equals(MenuEnum.Type.COMMAND)) {
 					if (m.getContent().equals("exit")) {
 						System.exit(0);
 					} else if (m.getContent().equals("logout")) {
