@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="0" xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets top="0" bottom="0" left="0" right="0" />
+	</padding>
+
+	<TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+		<columns>
+			<TableColumn fx:id="idCol" text="ID" />
+			<TableColumn fx:id="nameCol" text="姓名" />
+			<TableColumn fx:id="regDateCol" text="注册日期" />
+			<TableColumn fx:id="phoneCol" text="联系方式" />
+			<TableColumn fx:id="remarkCol" text="备注" />
+		</columns>
+	</TableView>
+
+	<stylesheets>
+		<URL value="@/css/default.css" />
+	</stylesheets>
+
+</VBox>
