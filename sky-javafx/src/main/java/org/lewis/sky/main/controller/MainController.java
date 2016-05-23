@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.ScrollPane;
 
 @Component
 public class MainController extends FxmlController implements Initializable {
 
 	@FXML
-	private Pane content;
+	private ScrollPane content;
 	@FXML
 	private Label version;
 
@@ -39,8 +39,7 @@ public class MainController extends FxmlController implements Initializable {
 	}
 
 	public void showCustomerList() {
-		content.getChildren().clear();
-		content.getChildren().add(this.customerListController.getView());
+		content.setContent(this.customerListController.getView());
 	}
 
 	@Bean

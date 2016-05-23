@@ -11,7 +11,8 @@
 		<Insets top="0" bottom="0" left="0" right="0" />
 	</padding>
 
-	<Pane fx:id="content" VBox.vgrow="ALWAYS" />
+	<ScrollPane fx:id="content" fitToWidth="true" fitToHeight="true"
+		VBox.vgrow="ALWAYS" />
 
 	<HBox spacing="0" alignment="CENTER">
 		<padding>
