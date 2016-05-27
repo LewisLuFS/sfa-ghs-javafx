@@ -24,7 +24,7 @@ public class SysUserServiceImplTests {
 
 		SysUser sysUser = new SysUser("431520", "pwd", "Lewis", "431520@sfa.com", "13912345678");
 		this.sysUserSrv.save(sysUser);
-		
+
 		assertEquals(count + 1, this.sysUserSrv.findAll().size());
 	}
 
