@@ -28,4 +28,9 @@ public class SysUserServiceImpl implements SysUserService {
 		this.sysUserRepository.delete(entity);
 	}
 
+	@Override
+	public void deleteAll() {
+		this.sysUserRepository.deleteAll();
+	}
+
 }

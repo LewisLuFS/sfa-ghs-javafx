@@ -38,13 +38,10 @@ public class SysUser implements Serializable {
 		super();
 	}
 
-	public SysUser(String sn, String password, String name, String email, String phone) {
+	public SysUser(String sn, String name) {
 		super();
 		this.sn = sn;
-		this.password = password;
 		this.name = name;
-		this.email = email;
-		this.phone = phone;
 	}
 
 	public long getId() {

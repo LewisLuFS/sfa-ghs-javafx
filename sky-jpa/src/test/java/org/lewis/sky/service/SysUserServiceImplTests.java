@@ -22,10 +22,16 @@ public class SysUserServiceImplTests {
 	public void save() {
 		long count = this.sysUserSrv.findAll().size();
 
-		SysUser sysUser = new SysUser("431520", "pwd", "Lewis", "431520@sfa.com", "13912345678");
+		SysUser sysUser = new SysUser("431520", "Lewis");
 		this.sysUserSrv.save(sysUser);
 
 		assertEquals(count + 1, this.sysUserSrv.findAll().size());
+	}
+
+	@Test
+	public void deleteAll() {
+		this.sysUserSrv.deleteAll();
+		assertEquals(0, this.sysUserSrv.findAll().size());
 	}
 
 }

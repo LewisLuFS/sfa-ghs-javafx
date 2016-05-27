@@ -11,4 +11,6 @@ public interface SysUserService {
 	public SysUser save(SysUser entity);
 
 	public void delete(SysUser entity);
+	
+	public void deleteAll();
 }
