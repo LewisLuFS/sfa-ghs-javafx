@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="org.sora.fx.controllers.MainScreenController">
+	<top>
+		<MenuBar fx:id="menuBar">
+			<menus>
+				<Menu text="Contact">
+					<items>
+						<MenuItem text="List" onAction="#listContacts" />
+						<MenuItem text="Add" onAction="#addContacts" />
+					</items>
+				</Menu>
+				<Menu text="Help">
+					<items>
+						<MenuItem text="Error screen" onAction="#showErrorDialog" />
+						<SeparatorMenuItem />
+						<MenuItem text="About" disable="true" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+
+	<center>
+		<Label text="%mainform.mainlabel" />
+	</center>
+
+</BorderPane>
