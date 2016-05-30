@@ -16,13 +16,13 @@ public class MainController implements Initializable {
 	private SceneConfig scene;
 
 	public MainController(SceneConfig scene) {
-		logger.debug("MainController()");
+		logger.debug("MainController(SceneConfig)");
 		this.scene = scene;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		logger.debug("initialize()");
+		logger.debug("MainController.initialize()");
 	}
 
 }

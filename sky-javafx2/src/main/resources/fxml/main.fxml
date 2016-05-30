@@ -6,29 +6,10 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="org.sora.fx.controllers.MainScreenController">
-	<top>
-		<MenuBar fx:id="menuBar">
-			<menus>
-				<Menu text="Contact">
-					<items>
-						<MenuItem text="List" onAction="#listContacts" />
-						<MenuItem text="Add" onAction="#addContacts" />
-					</items>
-				</Menu>
-				<Menu text="Help">
-					<items>
-						<MenuItem text="Error screen" onAction="#showErrorDialog" />
-						<SeparatorMenuItem />
-						<MenuItem text="About" disable="true" />
-					</items>
-				</Menu>
-			</menus>
-		</MenuBar>
-	</top>
+	fx:controller="org.lewis.sky.fxml.core.MainController">
 
 	<center>
-		<Label text="%mainform.mainlabel" />
+		<Label text="%main.mainLabel" />
 	</center>
 
 </BorderPane>

@@ -36,7 +36,7 @@ public class SceneConfig {
 
 	@PostConstruct
 	public void init() {
-		logger.info("ScreensConfiguration init()");
+		logger.info("SceneConfig.init()");
 	}
 
 	public void show(Parent root) {
