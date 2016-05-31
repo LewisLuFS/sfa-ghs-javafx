@@ -17,10 +17,10 @@ public class MainApp extends Application {
 	private static final Logger logger = LoggerFactory.getLogger(MainApp.class);
 
 	private static String[] savedArgs;
+	private ConfigurableApplicationContext applicationContext;
 
 	@Autowired
 	private SceneConfig sceneConfig;
-	private ConfigurableApplicationContext applicationContext;
 
 	public static void main(String[] args) {
 		savedArgs = args;
