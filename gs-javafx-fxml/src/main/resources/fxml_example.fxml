@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="hello.FXMLExampleController">
+	<padding>
+		<Insets top="0" bottom="0" left="0" right="0" />
+	</padding>
+
+	<MenuBar VBox.vgrow="NEVER">
+		<Menu text="文件">
+			<MenuItem text="属性" onAction="#menuAction" />
+			<MenuItem text="关闭" onAction="#menuAction" />
+		</Menu>
+		<Menu text="帮助">
+			<MenuItem text="关于" onAction="#menuAction" />
+		</Menu>
+	</MenuBar>
+
+	<Pane VBox.vgrow="ALWAYS">
+	</Pane>
+
+	<HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+		<padding>
+			<Insets top="10" bottom="10" left="0" right="20" />
+		</padding>
+
+		<Label fx:id="lbl" styleClass="lbl" />
+	</HBox>
+
+	<stylesheets>
+		<URL value="@default.css" />
+	</stylesheets>
+
+</VBox>
