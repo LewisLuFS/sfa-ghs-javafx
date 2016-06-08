@@ -2,6 +2,8 @@ package hello;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -51,10 +53,14 @@ public class ProfileController extends AnchorPane implements Initializable {
 		subscribed.setSelected(loggedUser.isSubscribed());
 		success.setOpacity(0);
 	}
+	
+	public ProfileController() {
+		Logger.getLogger(ProfileController.class.getName()).log(Level.INFO, "ProfileController()");
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		Logger.getLogger(ProfileController.class.getName()).log(Level.INFO, "ProfileController.initialize()");
 	}
 
 	public void processLogout(ActionEvent event) {

@@ -18,8 +18,6 @@ public class FXMLLoginDemoApp extends Application {
 
 	private Group root = new Group();
 	private User loggedUser;
-	private final double MINIMUM_WINDOW_WIDTH = 390.0;
-	private final double MINIMUM_WINDOW_HEIGHT = 500.0;
 
 	public Parent createContent() {
 		gotoLogin();

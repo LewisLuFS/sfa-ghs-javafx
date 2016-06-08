@@ -2,6 +2,8 @@ package hello;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController extends AnchorPane implements Initializable {
-
+	
 	@FXML
 	private TextField userId;
 	@FXML
@@ -28,9 +30,15 @@ public class LoginController extends AnchorPane implements Initializable {
 	public void setApp(FXMLLoginDemoApp application) {
 		this.application = application;
 	}
+	
+	public LoginController() {
+		Logger.getLogger(LoginController.class.getName()).log(Level.INFO, "LoginController()");
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Logger.getLogger(LoginController.class.getName()).log(Level.INFO, "LoginController.initialize()");
+		
 		errorMessage.setText("");
 		userId.setPromptText("demo");
 		password.setPromptText("demo");
