@@ -21,7 +21,7 @@ public class MainController extends FxmlController implements Initializable {
 	private Label lbl;
 
 	public MainController() {
-		super("/main.fxml", "message_cn");
+		super("/main.fxml");
 	}
 
 	@Override
