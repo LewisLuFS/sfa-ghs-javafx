@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets top="0" bottom="0" left="0" right="0" />
+	</padding>
+
+	<MenuBar VBox.vgrow="NEVER">
+		<Menu text="%menu.file">
+			<MenuItem text="%menu.properties" onAction="#menuAction" />
+			<MenuItem text="%menu.close" onAction="#menuAction" />
+		</Menu>
+		<Menu text="%menu.help">
+			<MenuItem text="%menu.about" onAction="#menuAction" />
+		</Menu>
+	</MenuBar>
+
+	<Pane VBox.vgrow="ALWAYS">
+	</Pane>
+
+	<HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+		<padding>
+			<Insets top="10" bottom="10" left="0" right="20" />
+		</padding>
+
+		<Label fx:id="lbl" styleClass="lbl" />
+	</HBox>
+
+	<stylesheets>
+		<URL value="@default.css" />
+	</stylesheets>
+
+</VBox>
