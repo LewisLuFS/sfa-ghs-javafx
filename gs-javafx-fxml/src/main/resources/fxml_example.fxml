@@ -12,12 +12,12 @@
 	</padding>
 
 	<MenuBar VBox.vgrow="NEVER">
-		<Menu text="文件">
-			<MenuItem text="属性" onAction="#menuAction" />
-			<MenuItem text="关闭" onAction="#menuAction" />
+		<Menu text="%menu.file">
+			<MenuItem text="%menu.properties" onAction="#menuAction" />
+			<MenuItem text="%menu.close" onAction="#menuAction" />
 		</Menu>
-		<Menu text="帮助">
-			<MenuItem text="关于" onAction="#menuAction" />
+		<Menu text="%menu.help">
+			<MenuItem text="%menu.about" onAction="#menuAction" />
 		</Menu>
 	</MenuBar>
 
