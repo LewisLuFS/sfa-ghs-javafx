@@ -19,7 +19,7 @@ public class Demo2Controller extends FxmlController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		logger.debug("Demo1Controller.initialize() ...");
+		logger.debug("Demo2Controller.initialize() ...");
 	}
 
 }

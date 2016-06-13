@@ -19,6 +19,7 @@
 		<Menu text="%menu.test">
 			<MenuItem text="%menu.demo1" onAction="#openDemo1" />
 			<MenuItem text="%menu.demo2" onAction="#openDemo2" />
+			<MenuItem text="%menu.webview" onAction="#openWebView" />
 		</Menu>
 		<Menu text="%menu.help">
 			<MenuItem text="%menu.about" onAction="#menuAction" />
@@ -30,7 +31,7 @@
 
 	<HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
 		<padding>
-			<Insets top="10" bottom="10" left="0" right="20" />
+			<Insets top="5" bottom="5" left="15" right="15" />
 		</padding>
 
 		<Label fx:id="lbl" styleClass="lbl" />

@@ -28,6 +28,8 @@ public class MainController extends FxmlController implements Initializable {
 	private Demo1Controller demo1Controller;
 	@Autowired
 	private Demo2Controller demo2Controller;
+	@Autowired
+	private WebViewController webViewController;
 
 	public MainController() {
 		super("/main.fxml");
@@ -54,6 +56,11 @@ public class MainController extends FxmlController implements Initializable {
 	@FXML
 	public void openDemo2(ActionEvent event) {
 		content.setContent(this.demo2Controller.getView());
+	}
+
+	@FXML
+	public void openWebView(ActionEvent event) {
+		content.setContent(this.webViewController.getView());
 	}
 
 }

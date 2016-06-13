@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<VBox spacing="5" xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets top="0" bottom="0" left="0" right="0" />
+	</padding>
+
+	<HBox spacing="5">
+		<padding>
+			<Insets top="2" bottom="2" left="10" right="10" />
+		</padding>
+
+		<TextField fx:id="locationField" HBox.hgrow="ALWAYS"
+			onAction="#goAction" />
+
+		<Button text="%btn.go" HBox.hgrow="NEVER" defaultButton="true"
+			onAction="#goAction" />
+	</HBox>
+
+<!-- 	<WebView VBox.vgrow="ALWAYS" /> -->
+
+	<stylesheets>
+		<URL value="@default.css" />
+	</stylesheets>
+
+</VBox>
