@@ -19,7 +19,7 @@ public class App extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml_example.fxml"),
 				ResourceBundle.getBundle("message_cn"));
 
-		Scene scene = new Scene(root, 800, 600);
+		Scene scene = new Scene(root, 900, 600);
 
 		primaryStage.setTitle("FXML Welcome");
 		primaryStage.setScene(scene);
