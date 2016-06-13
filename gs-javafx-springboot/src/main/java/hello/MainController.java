@@ -26,6 +26,8 @@ public class MainController extends FxmlController implements Initializable {
 
 	@Autowired
 	private Demo1Controller demo1Controller;
+	@Autowired
+	private Demo2Controller demo2Controller;
 
 	public MainController() {
 		super("/main.fxml");
@@ -51,8 +53,7 @@ public class MainController extends FxmlController implements Initializable {
 
 	@FXML
 	public void openDemo2(ActionEvent event) {
-		MenuItem item = (MenuItem) event.getSource();
-		logger.info(item.getText());
+		content.setContent(this.demo2Controller.getView());
 	}
 
 }

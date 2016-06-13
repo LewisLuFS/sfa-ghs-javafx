@@ -11,6 +11,14 @@
 		<Insets top="0" bottom="0" left="0" right="0" />
 	</padding>
 
+	<HBox spacing="5">
+		<padding>
+			<Insets top="2" bottom="2" left="10" right="10" />
+		</padding>
+
+		<TextField promptText="test" />
+	</HBox>
+
 	<TableView fx:id="tableView" tableMenuButtonVisible="true"
 		VBox.vgrow="ALWAYS">
 		<columns>
